@@ -30,7 +30,7 @@ STRING_CLASS1_CONTENT = [
                             [
                             "purple","My purple color Title in the third slide",
                             "black", null,
-                            ""
+                            "https://www.example.com/image3.jpg"
                             ],
                         ];
 
