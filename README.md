@@ -8,3 +8,6 @@ Classroom developed in JavaScript using Phaser.
 ## Web
 
 https://lrusso.github.io/ClassroomPhaser/ClassroomPhaser.htm
+
+## How does it work?
+
