@@ -1,4 +1,4 @@
-# ClassroomPhaser
+# Classroom Phaser
 
 ## Web:
 
