@@ -11,3 +11,41 @@ https://lrusso.github.io/ClassroomPhaser/ClassroomPhaser.htm
 
 ## How does it work?
 
+Open the **ClassroomPhaserBoard.htm** file and you will find the following structure.
+
+```javascript
+STRING_COURSE = "HTML & CSS Course";
+STRING_CLASS1 = "Class 1 - Introduction";
+STRING_CLASS1_CONTENT = [
+                            [
+                            "black","My black color Title in the first slide",
+                            "blue","My blue color Text in the first slide explaining something.",
+                            "https://www.example.com/image1.jpg"
+                            ],
+                            [
+                            "green","My green color Title in the second slide",
+                            "red","My red color Text in the second slide explaining something.",
+                            "https://www.example.com/image2.jpg"
+                            ],
+                            [
+                            "purple","My purple color Title in the third slide",
+                            "black", null,
+                            ""
+                            ],
+                        ];
+
+STRING_CLASS2 = "Class 2 - HTML Objects";
+STRING_CLASS3 = "Class 3 - CSS Implementation";
+STRING_CLASS4 = "Class 4 - W3C Code Validation";
+STRING_CLASS5 = "Class 5 - Handling file uploads";
+STRING_TIP = "Click in any class title to begin";
+STRING_ABOUT = "Designed by www.lrusso.com";
+```
+
+* Every slide in every class is an array within the class array **STRING_CLASSX_CONTENT**.
+
+* Each slide can have an optional text and image.
+
+* If the slide has an image but no text, the image will fill most the slide excluding the title area.
+
+* The images can be in Base64 format.
