@@ -2,7 +2,7 @@
 
 Classroom developed in JavaScript using Phaser.
 
-![alt screenshot](https://raw.githubusercontent.com/lrusso/ClassroomPhaser/master/ClassroomPhaser.png)
+![alt screenshot](https://raw.githubusercontent.com/lrusso/ClassroomPhaser/main/ClassroomPhaser.png)
 
 
 ## Web
