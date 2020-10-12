@@ -48,7 +48,7 @@ STRING_ABOUT = "Designed by www.lrusso.com";
 
 * Each slide can have an optional text and image.
 
-* If the slide has an image but no text, the image will fill most the slide excluding the title area.
+* If the slide has an image but no text, the image will be centered vertically.
 
 * The images can be in Base64 format.
 
