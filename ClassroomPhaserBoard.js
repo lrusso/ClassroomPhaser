@@ -54,6 +54,8 @@ Classroom.Preloader.prototype = {
 Classroom.Main = function (game)
 	{
 	this.splash = true;
+	this.toastText = null;
+	this.toastShadow = null;
 	this.board = null;
 	this.goBackIcon = null;
 	this.prevSlideIcon = null;
@@ -285,19 +287,23 @@ Classroom.Main.prototype = {
 		if (this.splash==true)
 			{
 			// ADDING THE SPLASH
-			var toastShadow = game.add.graphics();
-			toastShadow.beginFill(0x000000, 0.55);
-			var toastText = game.add.text(0, 0, STRING_ABOUT, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
-			toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
-			toastText.x = 800 / 2 - toastText.width / 4;
-			toastText.y = 381;
-			toastShadow.drawRoundedRect(800 / 2 - (toastText._width / 2) / 2 - 11, 373, (toastText._width / 2) + 23, 46, 10);
+			this.toastShadow = game.add.graphics();
+			this.toastShadow.beginFill(0x000000, 0.55);
+			this.toastText = game.add.text(0, 0, STRING_ABOUT, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
+			this.toastText.x = 800 / 2 - this.toastText.width / 4;
+			this.toastText.y = 381;
+			this.toastShadow.drawRoundedRect(800 / 2 - (this.toastText._width / 2) / 2 - 11, 373, (this.toastText._width / 2) + 23, 46, 10);
+
+			// CREATING A TEMPORARY REFERENCE FOR THE TIMEOUT FADE OUT
+			var tempToastTextRef = this.toastText;
+			var tempToastShadowRef = this.toastShadow;
 
 			// SETTING THAT IN 3 SECONDS THE SPLASH MUST FADE OUT
 			setTimeout(function()
 				{
-				game.add.tween(toastShadow).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
-				game.add.tween(toastText).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+				this.game.add.tween(tempToastShadowRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+				this.game.add.tween(tempToastTextRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
 				}, 3000);
 
 			// SETTING THAT THE SPLASH MUST NOT BE DISPLAYED AGAIN
@@ -321,6 +327,10 @@ Classroom.Main.prototype = {
 
 		// SHOWING THE NEXT SLIDE
 		this.nextSlide();
+
+		// HIDING THE TOAST
+		this.toastText.visible = false;
+		this.toastShadow.visible = false;
 		},
 
 	goBack: function()
