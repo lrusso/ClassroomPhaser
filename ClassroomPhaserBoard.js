@@ -302,8 +302,8 @@ Classroom.Main.prototype = {
 			// SETTING THAT IN 3 SECONDS THE SPLASH MUST FADE OUT
 			setTimeout(function()
 				{
-				this.game.add.tween(tempToastShadowRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
-				this.game.add.tween(tempToastTextRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+				game.add.tween(tempToastShadowRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+				game.add.tween(tempToastTextRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
 				}, 3000);
 
 			// SETTING THAT THE SPLASH MUST NOT BE DISPLAYED AGAIN
