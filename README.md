@@ -11,7 +11,7 @@ https://lrusso.github.io/ClassroomPhaser/ClassroomPhaser.htm
 
 ## How does it work?
 
-Open the **ClassroomPhaserBoard.htm** file and you will find a small script with the following structure:
+Open the **ClassroomPhaserBoard.htm** file and you will find a similar script:
 
 ```javascript
 STRING_COURSE = "HTML & CSS Course";
