@@ -45,8 +45,10 @@ STRING_ABOUT = "Designed by www.lrusso.com";
 
 * Every slide in every class is an array within the class array.
 
-* Every slide can have an optional text and image content.
+* Every slide can have an optional text, image and audio content.
 
 * If the slide has an image but no text, the image will be centered vertically.
+
+* All the image and audio content can be stored within the script in Base64 format.
 
 * At the moment, the script allows courses with up to 5 classes.
