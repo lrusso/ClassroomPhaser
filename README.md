@@ -49,4 +49,4 @@ STRING_ABOUT = "Designed by www.lrusso.com";
 
 * If the slide has an image but no text, the image will be centered vertically.
 
-* At the moment, the script allows courses up to 5 classes.
+* At the moment, the script allows courses with up to 5 classes.
