@@ -50,6 +50,4 @@ STRING_ABOUT = "Designed by www.lrusso.com";
 
 * If the slide has an image but no text, the image will be centered vertically.
 
-* You can use images in Base64 format.
-
 * At the moment, the script allows courses up to 5 classes.
