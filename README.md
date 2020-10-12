@@ -51,4 +51,4 @@ STRING_ABOUT = "Designed by www.lrusso.com";
 
 * All the image and audio content can be stored within the script in Base64 format.
 
-* At the moment, the script allows courses with up to 5 classes.
+* At the moment, Classroom Phaser allows courses with up to 5 classes.
