@@ -33,7 +33,6 @@ STRING_CLASS1_CONTENT = [
                             "https://www.example.com/image3.jpg"
                             ],
                         ];
-
 STRING_CLASS2 = "Class 2 - HTML Objects";
 STRING_CLASS3 = "Class 3 - CSS Implementation";
 STRING_CLASS4 = "Class 4 - W3C Code Validation";
