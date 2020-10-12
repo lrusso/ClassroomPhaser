@@ -44,7 +44,7 @@ STRING_ABOUT = "Designed by www.lrusso.com";
 
 ## Things to know
 
-* Every slide in every class is an array within the class array **STRING_CLASSX_CONTENT**.
+* Every slide in every class is an array within the class array.
 
 * Each slide can have an optional text and image.
 
