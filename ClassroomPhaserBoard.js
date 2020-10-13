@@ -58,8 +58,11 @@ Classroom.Main = function (game)
 	this.toastShadow = null;
 	this.board = null;
 	this.goBackIcon = null;
+	this.goBackIconShadow = null;
 	this.prevSlideIcon = null;
+	this.prevSlideIconShadow = null;
 	this.nextSlideIcon = null;
+	this.nextSlideIconShadow = null;
 	this.course = null;
 	this.class1 = null;
 	this.class1block = null;
@@ -109,6 +112,11 @@ Classroom.Main.prototype = {
 		this.board = this.add.sprite(30, 10, "board");
 
 		// ADDING THE GO BACK ICON
+		this.goBackIconShadow = game.add.sprite(30, 31, "goBack");
+		this.goBackIconShadow.visible = false;
+		this.goBackIconShadow.anchor.set(0.5);
+		this.goBackIconShadow.tint = 0x000000;
+		this.goBackIconShadow.alpha = 0.9;
 		this.goBackIcon = this.add.sprite(5, 5, "goBack");
 		this.goBackIcon.visible = false;
 		this.goBackIcon.inputEnabled = true;
@@ -119,6 +127,11 @@ Classroom.Main.prototype = {
 			}, this);
 
 		// ADDING THE PREV SLIDE ICON
+		this.prevSlideIconShadow = game.add.sprite(30, 404, "goBack");
+		this.prevSlideIconShadow.visible = false;
+		this.prevSlideIconShadow.anchor.set(0.5);
+		this.prevSlideIconShadow.tint = 0x000000;
+		this.prevSlideIconShadow.alpha = 0.9;
 		this.prevSlideIcon = this.add.sprite(5, 378, "prevSlide");
 		this.prevSlideIcon.visible = false;
 		this.prevSlideIcon.inputEnabled = true;
@@ -129,6 +142,11 @@ Classroom.Main.prototype = {
 			}, this);
 
 		// ADDING THE NEXT SLIDE ICON
+		this.nextSlideIconShadow = game.add.sprite(772, 404, "goBack");
+		this.nextSlideIconShadow.visible = false;
+		this.nextSlideIconShadow.anchor.set(0.5);
+		this.nextSlideIconShadow.tint = 0x000000;
+		this.nextSlideIconShadow.alpha = 0.9;
 		this.nextSlideIcon = this.add.sprite(747, 378, "nextSlide");
 		this.nextSlideIcon.visible = false;
 		this.nextSlideIcon.inputEnabled = true;
@@ -386,11 +404,13 @@ Classroom.Main.prototype = {
 				{
 				// HIDING THE PREV SLIDE ICON
 				this.prevSlideIcon.visible = false;
+				this.prevSlideIconShadow.visible = false;
 				}
 				else
 				{
 				// SHOWING THE PREV SLIDE ICON
 				this.prevSlideIcon.visible = true;
+				this.prevSlideIconShadow.visible = true;
 				}
 
 			// CHECKING IF IT IS THE LAST SLIDE
@@ -398,11 +418,13 @@ Classroom.Main.prototype = {
 				{
 				// HIDING THE NEXT SLIDE ICON
 				this.nextSlideIcon.visible = false;
+				this.nextSlideIconShadow.visible = false;
 				}
 				else
 				{
 				// SHOWING THE NEXT SLIDE ICON
 				this.nextSlideIcon.visible = true;
+				this.nextSlideIconShadow.visible = true;
 				}
 
 			// GETTING THE SLIDE VALUES
@@ -502,8 +524,11 @@ Classroom.Main.prototype = {
 		this.class5block.visible = false;
 		this.tip.visible = false;
 		this.goBackIcon.visible = true;
+		this.goBackIconShadow.visible = true;
 		this.prevSlideIcon.visible = true;
+		this.prevSlideIconShadow.visible = true;
 		this.nextSlideIcon.visible = true;
+		this.nextSlideIconShadow.visible = true;
 		},
 
 	showBoard: function()
@@ -522,8 +547,11 @@ Classroom.Main.prototype = {
 		this.class5block.visible = true;
 		this.tip.visible = true;
 		this.goBackIcon.visible = false;
+		this.goBackIconShadow.visible = false;
 		this.prevSlideIcon.visible = false;
+		this.prevSlideIconShadow.visible = false;
 		this.nextSlideIcon.visible = false;
+		this.nextSlideIconShadow.visible = false;
 		},
 
 	clearPreviousClass: function()
