@@ -43,7 +43,7 @@ Open the **ClassroomPhaserBoard.htm** file and you will find a similar script:
    STRING_CLASS3_CONTENT: [],
    STRING_CLASS4: "Class 4 - W3C Code Validation",
    STRING_CLASS4_CONTENT: [],
-   STRING_CLASS5: "Class 5 - Handling file uploads",
+   STRING_CLASS5: null,
    STRING_CLASS5_CONTENT: [],
    STRING_TIP: "Click in a class title to begin",
    STRING_ABOUT: "Designed by www.lrusso.com",
@@ -51,6 +51,8 @@ Open the **ClassroomPhaserBoard.htm** file and you will find a similar script:
 ```
 
 ## Things to know
+
+* A null class title will not be displayed.
 
 * Every slide is an array within an array in the class content key.
 
