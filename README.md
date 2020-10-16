@@ -14,9 +14,10 @@ https://lrusso.github.io/ClassroomPhaser/ClassroomPhaser.htm
 Open the **ClassroomPhaserBoard.htm** file and you will find a similar script:
 
 ```javascript
-STRING_COURSE = "HTML & CSS Course";
-STRING_CLASS1 = "Class 1 - Introduction";
-STRING_CLASS1_CONTENT = [
+{
+   STRING_COURSE: "HTML & CSS Course",
+   STRING_CLASS1: "Class 1 - Introduction",
+   STRING_CLASS1_CONTENT: [
                             [
                             "black","My black color Title in the first slide",
                             "blue","My blue color Text in the first slide explaining something.",
@@ -35,13 +36,18 @@ STRING_CLASS1_CONTENT = [
                             "https://www.example.com/image3.jpg",
                             "https://www.example.com/audio3.mp3",
                             ],
-                        ];
-STRING_CLASS2 = "Class 2 - HTML Objects";
-STRING_CLASS3 = "Class 3 - CSS Implementation";
-STRING_CLASS4 = "Class 4 - W3C Code Validation";
-STRING_CLASS5 = "Class 5 - Handling file uploads";
-STRING_TIP = "Click in a class title to begin";
-STRING_ABOUT = "Designed by www.lrusso.com";
+											],
+   STRING_CLASS2: "Class 2 - HTML Objects",
+   STRING_CLASS2_CONTENT: [],
+   STRING_CLASS3: "Class 3 - CSS Implementation",
+   STRING_CLASS3_CONTENT: [],
+   STRING_CLASS4: "Class 4 - W3C Code Validation",
+   STRING_CLASS4_CONTENT: [],
+   STRING_CLASS5: "Class 5 - Handling file uploads",
+   STRING_CLASS5_CONTENT: [],
+   STRING_TIP: "Click in a class title to begin",
+   STRING_ABOUT: "Designed by www.lrusso.com",
+}
 ```
 
 ## Things to know
