@@ -223,7 +223,7 @@ Classroom.Main.prototype = {
 			this.class1block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS1_CONTENT!=null)
+				if (myJSON.STRING_CLASS1_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = myJSON.STRING_CLASS1_CONTENT;
@@ -248,7 +248,7 @@ Classroom.Main.prototype = {
 			this.class2block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS2_CONTENT!=null)
+				if (myJSON.STRING_CLASS2_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = myJSON.STRING_CLASS2_CONTENT;
@@ -273,7 +273,7 @@ Classroom.Main.prototype = {
 			this.class3block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS3_CONTENT!=null)
+				if (myJSON.STRING_CLASS3_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = myJSON.STRING_CLASS3_CONTENT;
@@ -298,7 +298,7 @@ Classroom.Main.prototype = {
 			this.class4block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS4_CONTENT!=null)
+				if (myJSON.STRING_CLASS4_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = myJSON.STRING_CLASS4_CONTENT;
@@ -323,7 +323,7 @@ Classroom.Main.prototype = {
 			this.class5block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS5_CONTENT!=null)
+				if (myJSON.STRING_CLASS5_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = myJSON.STRING_CLASS5_CONTENT;
