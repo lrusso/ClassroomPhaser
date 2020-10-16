@@ -210,7 +210,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A FIRST CLASS
-		if (myJSON.STRING_CLASS1!="")
+		if (myJSON.STRING_CLASS1!=null)
 			{
 			// ADDING THE FIRST CLASS
 			this.class1 = game.add.text(80, 115, myJSON.STRING_CLASS1 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -235,7 +235,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A SECOND CLASS
-		if (myJSON.STRING_CLASS2!="")
+		if (myJSON.STRING_CLASS2!=null)
 			{
 			// ADDING THE SECOND CLASS
 			this.class2 = game.add.text(80, 155, myJSON.STRING_CLASS2 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -260,7 +260,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A THIRD CLASS
-		if (myJSON.STRING_CLASS3!="")
+		if (myJSON.STRING_CLASS3!=null)
 			{
 			// ADDING THE THIRD CLASS
 			this.class3 = game.add.text(80, 195, myJSON.STRING_CLASS3 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -285,7 +285,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A FOURTH CLASS
-		if (myJSON.STRING_CLASS4!="")
+		if (myJSON.STRING_CLASS4!=null)
 			{
 			// ADDING THE FOURTH CLASS
 			this.class4 = game.add.text(80, 235, myJSON.STRING_CLASS4 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -310,7 +310,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A FIFTH CLASS
-		if (myJSON.STRING_CLASS5!="")
+		if (myJSON.STRING_CLASS5!=null)
 			{
 			// ADDING THE FIFTH CLASS
 			this.class5 = game.add.text(80, 275, myJSON.STRING_CLASS5 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
