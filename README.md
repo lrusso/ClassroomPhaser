@@ -21,19 +21,19 @@ STRING_CLASS1_CONTENT = [
                             "black","My black color Title in the first slide",
                             "blue","My blue color Text in the first slide explaining something.",
                             "https://www.example.com/image1.jpg",
-                            "https://www.example.com/audio1.jpg",
+                            "https://www.example.com/audio1.mp3",
                             ],
                             [
                             "green","My green color Title in the second slide",
                             "red","My red color Text in the second slide explaining something.",
                             "https://www.example.com/image2.jpg",
-                            "https://www.example.com/audio2.jpg",
+                            "https://www.example.com/audio2.mp3",
                             ],
                             [
                             "purple","My purple color Title in the third slide",
                             "black", null,
                             "https://www.example.com/image3.jpg",
-                            "https://www.example.com/audio3.jpg",
+                            "https://www.example.com/audio3.mp3",
                             ],
                         ];
 STRING_CLASS2 = "Class 2 - HTML Objects";
