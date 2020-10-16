@@ -52,6 +52,6 @@ STRING_ABOUT = "Designed by www.lrusso.com";
 
 * If the slide has an image but no text, the image will be centered vertically.
 
-* After playing an audio (if any), it will show to the next slide (if any) or go back to the board.
+* After playing an audio (if any), it will go to the next slide (if any) or back to the board.
 
 * At the moment, Classroom Phaser allows courses with up to 5 classes.
