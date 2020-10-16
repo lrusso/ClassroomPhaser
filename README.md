@@ -20,17 +20,20 @@ STRING_CLASS1_CONTENT = [
                             [
                             "black","My black color Title in the first slide",
                             "blue","My blue color Text in the first slide explaining something.",
-                            "https://www.example.com/image1.jpg"
+                            "https://www.example.com/image1.jpg",
+                            "https://www.example.com/audio1.jpg",
                             ],
                             [
                             "green","My green color Title in the second slide",
                             "red","My red color Text in the second slide explaining something.",
-                            "https://www.example.com/image2.jpg"
+                            "https://www.example.com/image2.jpg",
+                            "https://www.example.com/audio2.jpg",
                             ],
                             [
                             "purple","My purple color Title in the third slide",
                             "black", null,
-                            "https://www.example.com/image3.jpg"
+                            "https://www.example.com/image3.jpg",
+                            "https://www.example.com/audio3.jpg",
                             ],
                         ];
 STRING_CLASS2 = "Class 2 - HTML Objects";
@@ -45,7 +48,7 @@ STRING_ABOUT = "Designed by www.lrusso.com";
 
 * Every slide is an array within the class array.
 
-* Every slide can have an optional text and image content.
+* Every slide can have an optional text, image and audio content.
 
 * If the slide has an image but no text, the image will be centered vertically.
 
