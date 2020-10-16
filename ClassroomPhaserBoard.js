@@ -82,7 +82,8 @@ Classroom.Main = function (game)
 	this.currentSlideImage = [];
 	this.currentSlideImageTempName = null;
 	this.currentSlideAudio = null;
-	this.currentSlideTimeout = null;
+	this.currentSlideAudioTimeoutStart = null;
+	this.currentSlideAudioTimeoutEnd = null;
 	this.tempTitleValue = null;
 	this.tempTitleColor = null;
 	this.tempTextValue = null;
@@ -412,11 +413,18 @@ Classroom.Main.prototype = {
 		{
 		try
 			{
-			// CHECKING IF THERE IS AN SLIDE TIMEOUT
-			if (this.currentSlideTimeout!=null)
+			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT START
+			if (this.currentSlideAudioTimeoutStart!=null)
 				{
-				// CLEARING THE SLIDE TIMEOUT
-				clearTimeout(this.currentSlideTimeout);
+				// CLEARING THE AUDIO SLIDE TIMEOUT START
+				clearTimeout(this.currentSlideAudioTimeoutStart);
+				}
+
+			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT END
+			if (this.currentSlideAudioTimeoutEnd!=null)
+				{
+				// CLEARING THE AUDIO SLIDE TIMEOUT END
+				clearTimeout(this.currentSlideAudioTimeoutEnd);
 				}
 
 			// CHECKING IF THERE IS A CLASSDATA
@@ -438,11 +446,18 @@ Classroom.Main.prototype = {
 		{
 		try
 			{
-			// CHECKING IF THERE IS AN SLIDE TIMEOUT
-			if (this.currentSlideTimeout!=null)
+			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT START
+			if (this.currentSlideAudioTimeoutStart!=null)
 				{
-				// CLEARING THE SLIDE TIMEOUT
-				clearTimeout(this.currentSlideTimeout);
+				// CLEARING THE AUDIO SLIDE TIMEOUT START
+				clearTimeout(this.currentSlideAudioTimeoutStart);
+				}
+
+			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT END
+			if (this.currentSlideAudioTimeoutEnd!=null)
+				{
+				// CLEARING THE AUDIO SLIDE TIMEOUT END
+				clearTimeout(this.currentSlideAudioTimeoutEnd);
 				}
 
 			// CHECKING IF THERE IS A CLASSDATA
@@ -595,11 +610,18 @@ Classroom.Main.prototype = {
 		{
 		try
 			{
-			// CHECKING IF THERE IS AN SLIDE TIMEOUT
-			if (this.currentSlideTimeout!=null)
+			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT START
+			if (this.currentSlideAudioTimeoutStart!=null)
 				{
-				// CLEARING THE SLIDE TIMEOUT
-				clearTimeout(this.currentSlideTimeout);
+				// CLEARING THE AUDIO SLIDE TIMEOUT START
+				clearTimeout(this.currentSlideAudioTimeoutStart);
+				}
+
+			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT END
+			if (this.currentSlideAudioTimeoutEnd!=null)
+				{
+				// CLEARING THE AUDIO SLIDE TIMEOUT END
+				clearTimeout(this.currentSlideAudioTimeoutEnd);
 				}
 
 			// CHECKING IF THERE IS A SLIDE AUDIO
@@ -677,18 +699,22 @@ Classroom.Main.prototype = {
 				// SETTING WHAT WILL HAPPEN WHEN THE AUDIO IS LOADED
 				this.currentSlideAudio.onloadstart = function()
 					{
-					// PLAYING THE AUDIO
-					tempRef.currentSlideAudio.play();
-
 					// SETTING A FADE IN EFFECT FOR ALL THE SLIDE COMPONENTS
 					tempRef.classContentFadeIn();
+
+					// SETTING A 700 MS DELAY AFTER THE AUDIO IS LOADED IN ORDER TO START THE AUDIO AND FADE IN EFFECT
+					tempRef.currentSlideAudioTimeoutStart = setTimeout(function()
+						{
+						// PLAYING THE AUDIO
+						tempRef.currentSlideAudio.play();
+						}, 700);
 					};
 
 				// SETTING WHAT WILL HAPPEN WHEN THE AUDIO IS ENDED
 				this.currentSlideAudio.onended = function()
 					{
 					// SETTING A 1000 MS DELAY AFTER THE AUDIO IS ENDED IN ORDER TO GO BACK TO THE BOARD OR SHOW THE NEXT SLIDE
-					tempRef.currentSlideTimeout = setTimeout(function()
+					tempRef.currentSlideAudioTimeoutEnd = setTimeout(function()
 						{
 						// CHECKING IF THE USER IS NOT AT THE BOARD
 						if (tempRef.stage.backgroundColor != "#275077")
