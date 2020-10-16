@@ -36,7 +36,7 @@ Open the **ClassroomPhaserBoard.htm** file and you will find a similar script:
                             "https://www.example.com/image3.jpg",
                             "https://www.example.com/audio3.mp3",
                             ],
-											],
+                          ],
    STRING_CLASS2: "Class 2 - HTML Objects",
    STRING_CLASS2_CONTENT: [],
    STRING_CLASS3: "Class 3 - CSS Implementation",
