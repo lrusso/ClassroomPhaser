@@ -713,7 +713,7 @@ Classroom.Main.prototype = {
 				// SETTING WHAT WILL HAPPEN WHEN THE AUDIO IS ENDED
 				this.currentSlideAudio.onended = function()
 					{
-					// SETTING A 1000 MS DELAY AFTER THE AUDIO IS ENDED IN ORDER TO GO BACK TO THE BOARD OR SHOW THE NEXT SLIDE
+					// SETTING A 700 MS DELAY AFTER THE AUDIO IS ENDED IN ORDER TO GO BACK TO THE BOARD OR SHOW THE NEXT SLIDE
 					tempRef.currentSlideAudioTimeoutEnd = setTimeout(function()
 						{
 						// CHECKING IF THE USER IS NOT AT THE BOARD
@@ -731,7 +731,7 @@ Classroom.Main.prototype = {
 								tempRef.nextSlide();
 								}
 							}
-						}, 1000);
+						}, 700);
 					};
 				}
 				else
