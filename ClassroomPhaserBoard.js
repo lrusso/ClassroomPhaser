@@ -82,6 +82,7 @@ Classroom.Main = function (game)
 	this.currentSlideImage = [];
 	this.currentSlideImageTempName = null;
 	this.currentSlideAudio = null;
+	this.currentSlideTimeout = null;
 	this.tempTitleValue = null;
 	this.tempTitleColor = null;
 	this.tempTextValue = null;
@@ -409,27 +410,53 @@ Classroom.Main.prototype = {
 
 	prevSlide: function()
 		{
-		// CHECKING IF THERE IS A CLASSDATA
-		if (this.classData!=null)
+		try
 			{
-			// UPDATING THE CURRENT SLIDE VALUE
-			this.currentSlide = this.currentSlide - 1;
+			// CHECKING IF THERE IS AN SLIDE TIMEOUT
+			if (this.currentSlideTimeout!=null)
+				{
+				// CLEARING THE SLIDE TIMEOUT
+				clearTimeout(this.currentSlideTimeout);
+				}
 
-			// SHOWING THE BOARD
-			this.showSlide();
+			// CHECKING IF THERE IS A CLASSDATA
+			if (this.classData!=null)
+				{
+				// UPDATING THE CURRENT SLIDE VALUE
+				this.currentSlide = this.currentSlide - 1;
+
+				// SHOWING THE BOARD
+				this.showSlide();
+				}
+			}
+			catch(err)
+			{
 			}
 		},
 
 	nextSlide: function()
 		{
-		// CHECKING IF THERE IS A CLASSDATA
-		if (this.classData!=null)
+		try
 			{
-			// UPDATING THE CURRENT SLIDE VALUE
-			this.currentSlide = this.currentSlide + 1;
+			// CHECKING IF THERE IS AN SLIDE TIMEOUT
+			if (this.currentSlideTimeout!=null)
+				{
+				// CLEARING THE SLIDE TIMEOUT
+				clearTimeout(this.currentSlideTimeout);
+				}
 
-			// SHOWING THE BOARD
-			this.showSlide();
+			// CHECKING IF THERE IS A CLASSDATA
+			if (this.classData!=null)
+				{
+				// UPDATING THE CURRENT SLIDE VALUE
+				this.currentSlide = this.currentSlide + 1;
+
+				// SHOWING THE BOARD
+				this.showSlide();
+				}
+			}
+			catch(err)
+			{
 			}
 		},
 
@@ -568,6 +595,13 @@ Classroom.Main.prototype = {
 		{
 		try
 			{
+			// CHECKING IF THERE IS AN SLIDE TIMEOUT
+			if (this.currentSlideTimeout!=null)
+				{
+				// CLEARING THE SLIDE TIMEOUT
+				clearTimeout(this.currentSlideTimeout);
+				}
+
 			// CHECKING IF THERE IS A SLIDE AUDIO
 			if (this.currentSlideAudio!=null)
 				{
@@ -653,17 +687,25 @@ Classroom.Main.prototype = {
 				// SETTING WHAT WILL HAPPEN WHEN THE AUDIO IS ENDED
 				this.currentSlideAudio.onended = function()
 					{
-					// CHECKING IF THE CURRENT SLIDE IS THE LAST SLIDE
-					if (tempRef.currentSlide==tempRef.classData.length -1)
+					// SETTING A 1000 MS DELAY AFTER THE AUDIO IS ENDED IN ORDER TO GO BACK TO THE BOARD OR SHOW THE NEXT SLIDE
+					tempRef.currentSlideTimeout = setTimeout(function()
 						{
-						// GOING BACK TO THE BOARD
-						tempRef.goBack();
-						}
-						else
-						{
-						// SHOWING THE NEXT SLIDE
-						tempRef.nextSlide();
-						}
+						// CHECKING IF THE USER IS NOT AT THE BOARD
+						if (tempRef.stage.backgroundColor != "#275077")
+							{
+							// CHECKING IF THE CURRENT SLIDE IS THE LAST SLIDE
+							if (tempRef.currentSlide==tempRef.classData.length -1)
+								{
+								// GOING BACK TO THE BOARD
+								tempRef.goBack();
+								}
+								else
+								{
+								// SHOWING THE NEXT SLIDE
+								tempRef.nextSlide();
+								}
+							}
+						}, 1000);
 					};
 				}
 				else
