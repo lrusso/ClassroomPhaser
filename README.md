@@ -19,19 +19,19 @@ Open the **ClassroomPhaserBoard.htm** file and you will find a similar script:
    STRING_CLASS1: "Class 1 - Introduction",
    STRING_CLASS1_CONTENT: [
                             [
-                            "black","My black color Title in the first slide",
-                            "blue","My blue color Text in the first slide explaining something.",
+                            "black", "My black color Title in the first slide",
+                            "blue", "My blue color Text in the first slide explaining something.",
                             "https://www.example.com/image1.jpg",
                             "https://www.example.com/audio1.mp3",
                             ],
                             [
-                            "green","My green color Title in the second slide",
-                            "red","My red color Text in the second slide explaining something.",
+                            "green", "My green color Title in the second slide",
+                            "red", "My red color Text in the second slide explaining something.",
                             "https://www.example.com/image2.jpg",
                             "https://www.example.com/audio2.mp3",
                             ],
                             [
-                            "purple","My purple color Title in the third slide",
+                            "purple", "My purple color Title in the third slide",
                             "black", null,
                             "https://www.example.com/image3.jpg",
                             "https://www.example.com/audio3.mp3",
