@@ -11,42 +11,42 @@ https://lrusso.github.io/ClassroomPhaser/ClassroomPhaser.htm
 
 ## How does it work?
 
-Open the **ClassroomPhaserBoard.htm** file and you will find a similar script:
+Open the **ClassroomPhaserDefault.json** and you will find a similar structure:
 
 ```javascript
 {
-   STRING_COURSE: "HTML & CSS Course",
-   STRING_CLASS1: "Class 1 - Introduction",
-   STRING_CLASS1_CONTENT: [
+   "STRING_COURSE": "HTML & CSS Course",
+   "STRING_CLASS1": "Class 1 - Introduction",
+   "STRING_CLASS1_CONTENT": [
                             [
                             "#000000", "My black color Title in the first slide",
                             "#0000FF", "My blue color Text in the first slide explaining something.",
                             "https://www.example.com/image1.jpg",
-                            "https://www.example.com/audio1.mp3",
+                            "https://www.example.com/audio1.mp3"
                             ],
                             [
                             "#008000", "My green color Title in the second slide",
                             "#FF0000", "My red color Text in the second slide explaining something.",
                             "https://www.example.com/image2.jpg",
-                            "https://www.example.com/audio2.mp3",
+                            "https://www.example.com/audio2.mp3"
                             ],
                             [
                             "#800080", "My purple color Title in the third slide",
                             "#000000", null,
                             "https://www.example.com/image3.jpg",
                             "https://www.example.com/audio3.mp3",
-                            ],
+                            ]
                           ],
-   STRING_CLASS2: "Class 2 - HTML Objects",
-   STRING_CLASS2_CONTENT: [],
-   STRING_CLASS3: "Class 3 - CSS Implementation",
-   STRING_CLASS3_CONTENT: [],
-   STRING_CLASS4: "Class 4 - W3C Code Validation",
-   STRING_CLASS4_CONTENT: [],
-   STRING_CLASS5: null,
-   STRING_CLASS5_CONTENT: [],
-   STRING_TIP: "Click in a class title to begin",
-   STRING_ABOUT: "Designed by www.lrusso.com",
+   "STRING_CLASS2": "Class 2 - HTML Objects",
+   "STRING_CLASS2_CONTENT": [],
+   "STRING_CLASS3": "Class 3 - CSS Implementation",
+   "STRING_CLASS3_CONTENT": [],
+   "STRING_CLASS4": "Class 4 - W3C Code Validation",
+   "STRING_CLASS4_CONTENT": [],
+   "STRING_CLASS5": null,
+   "STRING_CLASS5_CONTENT": [],
+   "STRING_TIP": "Click in a class title to begin",
+   "STRING_ABOUT": "Designed by www.lrusso.com"
 }
 ```
 
