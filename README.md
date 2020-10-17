@@ -66,7 +66,6 @@ Open the **ClassroomPhaserDefault.json** and you will find a similar structure:
 
 ## Using different courses
 
-
 | BROWSING TO  | READS THE COURSE DATA FROM |
 | :------------ |:---------------:|
 | ClassroomPhaser.htm | ClassroomPhaserDefault.json |
