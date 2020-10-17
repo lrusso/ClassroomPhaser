@@ -133,6 +133,7 @@
 
 				// CREATING A REQUEST
 				var myRequest = new XMLHttpRequest();
+				myRequest.overrideMimeType("text/plain");
 				myRequest.open("GET", getCourseName(), true);
 				myRequest.onreadystatechange = function (e)
 					{
