@@ -341,7 +341,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A TIP
-		if (parent.myJSON.STRING_TIP!="")
+		if (parent.myJSON.STRING_TIP!=null)
 			{
 			// ADDING THE TIP
 			this.tip = game.add.text(0, 0, " " + parent.myJSON.STRING_TIP + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -353,28 +353,32 @@ Classroom.Main.prototype = {
 		// CHECKING IF THE SPLASH MUST BE DISPLAYED
 		if (this.splash==true)
 			{
-			// ADDING THE SPLASH
-			this.toastShadow = game.add.graphics();
-			this.toastShadow.beginFill(0x000000, 0.55);
-			this.toastText = game.add.text(0, 0, parent.myJSON.STRING_ABOUT, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
-			this.toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
-			this.toastText.x = 800 / 2 - this.toastText.width / 4;
-			this.toastText.y = 381;
-			this.toastShadow.drawRoundedRect(800 / 2 - (this.toastText._width / 2) / 2 - 11, 373, (this.toastText._width / 2) + 23, 46, 10);
-
-			// CREATING A TEMPORARY REFERENCE FOR THE TIMEOUT FADE OUT
-			var tempToastTextRef = this.toastText;
-			var tempToastShadowRef = this.toastShadow;
-
-			// SETTING THAT IN 3 SECONDS THE SPLASH MUST FADE OUT
-			setTimeout(function()
+			// CHECKING IF THERE IS AN ABOUT
+			if (parent.myJSON.STRING_ABOUT!=null)
 				{
-				game.add.tween(tempToastShadowRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
-				game.add.tween(tempToastTextRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
-				}, 3000);
+				// ADDING THE SPLASH
+				this.toastShadow = game.add.graphics();
+				this.toastShadow.beginFill(0x000000, 0.55);
+				this.toastText = game.add.text(0, 0, parent.myJSON.STRING_ABOUT, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+				this.toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
+				this.toastText.x = 800 / 2 - this.toastText.width / 4;
+				this.toastText.y = 381;
+				this.toastShadow.drawRoundedRect(800 / 2 - (this.toastText._width / 2) / 2 - 11, 373, (this.toastText._width / 2) + 23, 46, 10);
 
-			// SETTING THAT THE SPLASH MUST NOT BE DISPLAYED AGAIN
-			this.splash = false;
+				// CREATING A TEMPORARY REFERENCE FOR THE TIMEOUT FADE OUT
+				var tempToastTextRef = this.toastText;
+				var tempToastShadowRef = this.toastShadow;
+
+				// SETTING THAT IN 3 SECONDS THE SPLASH MUST FADE OUT
+				setTimeout(function()
+					{
+					game.add.tween(tempToastShadowRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+					game.add.tween(tempToastTextRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+					}, 3000);
+
+				// SETTING THAT THE SPLASH MUST NOT BE DISPLAYED AGAIN
+				this.splash = false;
+				}
 			}
 		},
 
@@ -396,8 +400,8 @@ Classroom.Main.prototype = {
 		this.nextSlide();
 
 		// HIDING THE TOAST
-		this.toastText.visible = false;
-		this.toastShadow.visible = false;
+		if(this.toastText!=null){this.toastText.visible = false;}
+		if(this.toastShadow!=null){this.toastShadow.visible = false;}
 		},
 
 	goBack: function()
@@ -569,18 +573,18 @@ Classroom.Main.prototype = {
 	hideBoard: function()
 		{
 		this.board.visible = false;
-		this.course.visible = false;
-		this.class1.visible = false;
-		this.class1block.visible = false;
-		this.class2.visible = false;
-		this.class2block.visible = false;
-		this.class3.visible = false;
-		this.class3block.visible = false;
-		this.class4.visible = false;
-		this.class4block.visible = false;
-		this.class5.visible = false;
-		this.class5block.visible = false;
-		this.tip.visible = false;
+		if(this.course!=null){this.course.visible = false;}
+		if(this.class1!=null){this.class1.visible = false;}
+		if(this.class1block!=null){this.class1block.visible = false;}
+		if(this.class2!=null){this.class2.visible = false;}
+		if(this.class2block!=null){this.class2block.visible = false;}
+		if(this.class3!=null){this.class3.visible = false;}
+		if(this.class3block!=null){this.class3block.visible = false;}
+		if(this.class4!=null){this.class4.visible = false;}
+		if(this.class4block!=null){this.class4block.visible = false;}
+		if(this.class5!=null){this.class5.visible = false;}
+		if(this.class5block!=null){this.class5block.visible = false;}
+		if(this.tip!=null){this.tip.visible = false;}
 		this.goBackIcon.visible = true;
 		this.goBackIconShadow.visible = true;
 		this.prevSlideIcon.visible = true;
@@ -592,18 +596,18 @@ Classroom.Main.prototype = {
 	showBoard: function()
 		{
 		this.board.visible = true;
-		this.course.visible = true;
-		this.class1.visible = true;
-		this.class1block.visible = true;
-		this.class2.visible = true;
-		this.class2block.visible = true;
-		this.class3.visible = true;
-		this.class3block.visible = true;
-		this.class4.visible = true;
-		this.class4block.visible = true;
-		this.class5.visible = true;
-		this.class5block.visible = true;
-		this.tip.visible = true;
+		if(this.course!=null){this.course.visible = true;}
+		if(this.class1!=null){this.class1.visible = true;}
+		if(this.class1block!=null){this.class1block.visible = true;}
+		if(this.class2!=null){this.class2.visible = true;}
+		if(this.class2block!=null){this.class2block.visible = true;}
+		if(this.class3!=null){this.class3.visible = true;}
+		if(this.class3block!=null){this.class3block.visible = true;}
+		if(this.class4!=null){this.class4.visible = true;}
+		if(this.class4block!=null){this.class4block.visible = true;}
+		if(this.class5!=null){this.class5.visible = true;}
+		if(this.class5block!=null){this.class5block.visible = true;}
+		if(this.tip!=null){this.tip.visible = true;}
 		this.goBackIcon.visible = false;
 		this.goBackIconShadow.visible = false;
 		this.prevSlideIcon.visible = false;
