@@ -3,9 +3,8 @@
 
 // workaround for enabling audio in Safari
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
-var finalAudioContext=null;
-var currentSlideAudio;
-function fixAudioContext(e){if(finalAudioContext==null){finalAudioContext=new AudioContext();finalAudioContext.resume();try{currentSlideAudio = new Audio();currentSlideAudio.play();}catch(err){}}}
+
+function fixAudioContext(e){if(parent.finalAudioContext==null){parent.finalAudioContext=new AudioContext();parent.finalAudioContext.resume();try{parent.currentSlideAudio = new Audio();}catch(err){}}}
 document.addEventListener("click",fixAudioContext);
 document.addEventListener("touchstart",fixAudioContext);
 
@@ -34,7 +33,7 @@ Classroom.Preloader.prototype = {
 		this.scale.refresh();
 
 		// UPDATING THE PARENT DOCUMENT TITLE
-		try{parent.document.title = myJSON.STRING_COURSE;}catch(err){}
+		try{parent.document.title = parent.myJSON.STRING_COURSE;}catch(err){}
 		},
 
 	preload: function ()
@@ -207,20 +206,20 @@ Classroom.Main.prototype = {
 			}, this);
 
 		// CHECKING IF THERE IS A COURSE TITLE
-		if (myJSON.STRING_COURSE!="")
+		if (parent.myJSON.STRING_COURSE!="")
 			{
 			// ADDING THE COURSE TITLE
-			this.course = game.add.text(0, 0, " " + myJSON.STRING_COURSE + " ", { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.course = game.add.text(0, 0, " " + parent.myJSON.STRING_COURSE + " ", { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 			this.course.setShadow(3, 3, "rgba(0,0,0,1)", 1);
 			this.course.x = 800 / 2 - this.course.width / 4;
 			this.course.y = 53;
 			}
 
 		// CHECKING IF THERE IS A FIRST CLASS
-		if (myJSON.STRING_CLASS1!=null)
+		if (parent.myJSON.STRING_CLASS1!=null)
 			{
 			// ADDING THE FIRST CLASS
-			this.class1 = game.add.text(80, 115, myJSON.STRING_CLASS1 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.class1 = game.add.text(80, 115, parent.myJSON.STRING_CLASS1 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 			this.class1.setShadow(3, 3, "rgba(0,0,0,1)", 1);
 			this.class1block = game.add.sprite(80, 115, "");
 			this.class1block.inputEnabled = true;
@@ -230,10 +229,10 @@ Classroom.Main.prototype = {
 			this.class1block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS1_CONTENT.length>0)
+				if (parent.myJSON.STRING_CLASS1_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
-					this.classData = myJSON.STRING_CLASS1_CONTENT;
+					this.classData = parent.myJSON.STRING_CLASS1_CONTENT;
 
 					// STARTING THE CLASS
 					this.startClass();
@@ -242,10 +241,10 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A SECOND CLASS
-		if (myJSON.STRING_CLASS2!=null)
+		if (parent.myJSON.STRING_CLASS2!=null)
 			{
 			// ADDING THE SECOND CLASS
-			this.class2 = game.add.text(80, 155, myJSON.STRING_CLASS2 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.class2 = game.add.text(80, 155, parent.myJSON.STRING_CLASS2 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 			this.class2.setShadow(3, 3, "rgba(0,0,0,1)", 1);
 			this.class2block = game.add.sprite(80, 155, "");
 			this.class2block.inputEnabled = true;
@@ -255,10 +254,10 @@ Classroom.Main.prototype = {
 			this.class2block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS2_CONTENT.length>0)
+				if (parent.myJSON.STRING_CLASS2_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
-					this.classData = myJSON.STRING_CLASS2_CONTENT;
+					this.classData = parent.myJSON.STRING_CLASS2_CONTENT;
 
 					// STARTING THE CLASS
 					this.startClass();
@@ -267,10 +266,10 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A THIRD CLASS
-		if (myJSON.STRING_CLASS3!=null)
+		if (parent.myJSON.STRING_CLASS3!=null)
 			{
 			// ADDING THE THIRD CLASS
-			this.class3 = game.add.text(80, 195, myJSON.STRING_CLASS3 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.class3 = game.add.text(80, 195, parent.myJSON.STRING_CLASS3 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 			this.class3.setShadow(3, 3, "rgba(0,0,0,1)", 1);
 			this.class3block = game.add.sprite(80, 195, "");
 			this.class3block.inputEnabled = true;
@@ -280,10 +279,10 @@ Classroom.Main.prototype = {
 			this.class3block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS3_CONTENT.length>0)
+				if (parent.myJSON.STRING_CLASS3_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
-					this.classData = myJSON.STRING_CLASS3_CONTENT;
+					this.classData = parent.myJSON.STRING_CLASS3_CONTENT;
 
 					// STARTING THE CLASS
 					this.startClass();
@@ -292,10 +291,10 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A FOURTH CLASS
-		if (myJSON.STRING_CLASS4!=null)
+		if (parent.myJSON.STRING_CLASS4!=null)
 			{
 			// ADDING THE FOURTH CLASS
-			this.class4 = game.add.text(80, 235, myJSON.STRING_CLASS4 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.class4 = game.add.text(80, 235, parent.myJSON.STRING_CLASS4 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 			this.class4.setShadow(3, 3, "rgba(0,0,0,1)", 1);
 			this.class4block = game.add.sprite(80, 235, "");
 			this.class4block.inputEnabled = true;
@@ -305,10 +304,10 @@ Classroom.Main.prototype = {
 			this.class4block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS4_CONTENT.length>0)
+				if (parent.myJSON.STRING_CLASS4_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
-					this.classData = myJSON.STRING_CLASS4_CONTENT;
+					this.classData = parent.myJSON.STRING_CLASS4_CONTENT;
 
 					// STARTING THE CLASS
 					this.startClass();
@@ -317,10 +316,10 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A FIFTH CLASS
-		if (myJSON.STRING_CLASS5!=null)
+		if (parent.myJSON.STRING_CLASS5!=null)
 			{
 			// ADDING THE FIFTH CLASS
-			this.class5 = game.add.text(80, 275, myJSON.STRING_CLASS5 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.class5 = game.add.text(80, 275, parent.myJSON.STRING_CLASS5 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 			this.class5.setShadow(3, 3, "rgba(0,0,0,1)", 1);
 			this.class5block = game.add.sprite(80, 275, "");
 			this.class5block.inputEnabled = true;
@@ -330,10 +329,10 @@ Classroom.Main.prototype = {
 			this.class5block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (myJSON.STRING_CLASS5_CONTENT.length>0)
+				if (parent.myJSON.STRING_CLASS5_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
-					this.classData = myJSON.STRING_CLASS5_CONTENT;
+					this.classData = parent.myJSON.STRING_CLASS5_CONTENT;
 
 					// STARTING THE CLASS
 					this.startClass();
@@ -342,10 +341,10 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A TIP
-		if (myJSON.STRING_TIP!="")
+		if (parent.myJSON.STRING_TIP!="")
 			{
 			// ADDING THE TIP
-			this.tip = game.add.text(0, 0, " " + myJSON.STRING_TIP + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.tip = game.add.text(0, 0, " " + parent.myJSON.STRING_TIP + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 			this.tip.setShadow(3, 3, "rgba(0,0,0,1)", 1);
 			this.tip.x = 800 / 2 - this.tip.width / 4;
 			this.tip.y = 340;
@@ -357,7 +356,7 @@ Classroom.Main.prototype = {
 			// ADDING THE SPLASH
 			this.toastShadow = game.add.graphics();
 			this.toastShadow.beginFill(0x000000, 0.55);
-			this.toastText = game.add.text(0, 0, myJSON.STRING_ABOUT, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
+			this.toastText = game.add.text(0, 0, parent.myJSON.STRING_ABOUT, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 			this.toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
 			this.toastText.x = 800 / 2 - this.toastText.width / 4;
 			this.toastText.y = 381;
@@ -632,7 +631,7 @@ Classroom.Main.prototype = {
 				}
 
 			// PAUSING THE SLIDE AUDIO (IF ANY)
-			try{currentSlideAudio.pause()}catch(err){}
+			try{parent.currentSlideAudio.pause()}catch(err){}
 
 			// CHECKING IF THERE IS A SLIDE TITLE
 			if (this.currentSlideTitle!=null)
@@ -685,14 +684,16 @@ Classroom.Main.prototype = {
 			// CHECKING IF THE CURRENT SLIDE HAS AN AUDIO RESOURCE
 			if (this.tempAudioValue!=null)
 				{
+				parent.loadAndPlay(this.tempAudioValue);
+				/*
 				// CREATING A NEW AUDIO PLAYER
-				currentSlideAudio.src = this.tempAudioValue;
+				parent.currentSlideAudio.src = this.tempAudioValue;
 
 				// CREATING A TEMP AUDIO REFERENCE
 				var tempRef = this;
 
 				// SETTING WHAT WILL HAPPEN WHEN THE AUDIO IS LOADED
-				currentSlideAudio.onloadstart = function()
+				parent.currentSlideAudio.onloadstart = function()
 					{
 					// SETTING A FADE IN EFFECT FOR ALL THE SLIDE COMPONENTS
 					tempRef.classContentFadeIn();
@@ -701,12 +702,13 @@ Classroom.Main.prototype = {
 					tempRef.currentSlideAudioTimeoutStart = setTimeout(function()
 						{
 						// PLAYING THE AUDIO
-						currentSlideAudio.play();
+						parent.playAudio();
 						}, 700);
 					};
-
+				*/
+				/*
 				// SETTING WHAT WILL HAPPEN WHEN THE AUDIO IS ENDED
-				currentSlideAudio.onended = function()
+				parent.currentSlideAudio.onended = function()
 					{
 					// SETTING A 700 MS DELAY AFTER THE AUDIO IS ENDED IN ORDER TO GO BACK TO THE BOARD OR SHOW THE NEXT SLIDE
 					tempRef.currentSlideAudioTimeoutEnd = setTimeout(function()
@@ -728,6 +730,7 @@ Classroom.Main.prototype = {
 							}
 						}, 700);
 					};
+				*/
 				}
 				else
 				{
@@ -737,6 +740,7 @@ Classroom.Main.prototype = {
 			}
 			catch(err)
 			{
+			alert(err)
 			}
 		},
 
@@ -770,6 +774,42 @@ Classroom.Main.prototype = {
 			}
 		},
 	};
+
+function onAudioStartEvent()
+	{
+	// SETTING A FADE IN EFFECT FOR ALL THE SLIDE COMPONENTS
+	game.state.states["Classroom.Main"].classContentFadeIn();
+
+	// SETTING A 700 MS DELAY AFTER THE AUDIO IS LOADED IN ORDER TO START THE AUDIO AND FADE IN EFFECT
+	game.state.states["Classroom.Main"].currentSlideAudioTimeoutStart = setTimeout(function()
+		{
+		// PLAYING THE AUDIO
+		parent.currentSlideAudio.play();
+		}, 700);
+	}
+
+function onAudioEndEvent()
+	{
+	// SETTING A 700 MS DELAY AFTER THE AUDIO IS ENDED IN ORDER TO GO BACK TO THE BOARD OR SHOW THE NEXT SLIDE
+	game.state.states["Classroom.Main"].currentSlideAudioTimeoutEnd = setTimeout(function()
+		{
+		// CHECKING IF THE USER IS NOT AT THE BOARD
+		if (game.stage.backgroundColor != "#275077")
+			{
+			// CHECKING IF THE CURRENT SLIDE IS THE LAST SLIDE
+			if (game.state.states["Classroom.Main"].currentSlide==game.state.states["Classroom.Main"].classData.length -1)
+				{
+				// GOING BACK TO THE BOARD
+				game.state.states["Classroom.Main"].goBack();
+				}
+				else
+				{
+				// SHOWING THE NEXT SLIDE
+				game.state.states["Classroom.Main"].nextSlide();
+				}
+			}
+		}, 700);
+	}
 
 // CREATING THE CLASSROOM INSTANCE
 var config = {width: 800, height: 432, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: true, resolution: 2};

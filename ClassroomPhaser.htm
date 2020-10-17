@@ -20,17 +20,41 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 		<style>
 			html,body{background-color:black;height:100%;padding:0;margin:0;overflow:hidden}
-			#content{position:fixed;height:100%;width:100%;margin:0;padding:0;border:none;display:none}
+			#content{position:fixed;height:100%;width:100%;margin:0;padding:0;border:none;display:none;z-index:9}
 
 			@media only screen and (orientation:portrait)
 				{
 				#content{position:fixed;transform:rotate(-90deg);transform-origin:left top;width:100vh;overflow-x:hidden;top:100%;left:0}
 				}
+
+			.pleasewait{position:fixed;width:64px;height:64px;left:0;right:0;top:0;bottom:0;margin:auto auto;border:0;z-index:1}
+			.lds-spinner{color:white;display:inline-block;position:relative;width:64px;height:64px}
+			.lds-spinner div{transform-origin:32px 32px;animation:lds-spinner 1.2s linear infinite}
+			.lds-spinner div:after{content:" ";display:block;position:absolute;top:3px;left:29px;width:5px;height:14px;border-radius:20%;background:white}
+			.lds-spinner div:nth-child(1){transform:rotate(0deg);animation-delay:-1.1s}
+			.lds-spinner div:nth-child(2){transform:rotate(30deg);animation-delay:-1s}
+			.lds-spinner div:nth-child(3){transform:rotate(60deg);animation-delay:-0.9s}
+			.lds-spinner div:nth-child(4){transform:rotate(90deg);animation-delay:-0.8s}
+			.lds-spinner div:nth-child(5){transform:rotate(120deg);animation-delay:-0.7s}
+			.lds-spinner div:nth-child(6){transform:rotate(150deg);animation-delay:-0.6s}
+			.lds-spinner div:nth-child(7){transform:rotate(180deg);animation-delay:-0.5s}
+			.lds-spinner div:nth-child(8){transform:rotate(210deg);animation-delay:-0.4s}
+			.lds-spinner div:nth-child(9){transform:rotate(240deg);animation-delay:-0.3s}
+			.lds-spinner div:nth-child(10){transform:rotate(270deg);animation-delay:-0.2s}
+			.lds-spinner div:nth-child(11){transform:rotate(300deg);animation-delay:-0.1s}
+			.lds-spinner div:nth-child(12){transform:rotate(330deg);animation-delay:0s}
+			@keyframes lds-spinner{0%{opacity:1}100%{opacity:0}}
 		</style>
 	</head>
 	<body>
+		<div class="pleasewait"><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
 		<iframe id="content" src="about:blank"></iframe>
 		<script>
+
+			// DO NOT MODIFY
+			var myJSON = null;
+			var finalAudioContext = null;
+			var currentSlideAudio = null;
 
 			function resizeContent()
 				{
@@ -61,11 +85,7 @@
 					document.getElementById("content").focus();
 					}, 250);
 
-				// LOADING THE GAME
-				document.getElementById("content").src = "ClassroomPhaserBoard.htm";
-
-				// SHOWING THE IFRAME
-				document.getElementById("content").style.display = "block";
+				loadCourse();
 				});
 
 			window.addEventListener("resize", function()
@@ -92,6 +112,87 @@
 					// Registration failed
 					//console.log("ServiceWorker registration failed: " + err);
 					});
+				}
+
+			// FUNCTION FOR GETTING THE DEFAULT COURSE NAME
+			function getCourseName()
+				{
+				var name = "course";
+				var url = location.href;
+				name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+				var regexS = "[\\?&]"+name+"=([^&#]*)";
+				var regex = new RegExp( regexS );
+				var results = regex.exec( url );
+				return results == null ? "ClassroomPhaserDefault.json" : results[1] + ".json";
+				}
+
+			function loadCourse()
+				{
+				// CLEANING MYJSON VARIABLE
+				myJSON = null;
+
+				// CREATING A REQUEST
+				var myRequest = new XMLHttpRequest();
+				myRequest.open("GET", getCourseName(), true);
+				myRequest.onreadystatechange = function (e)
+					{
+					// CHECKING THE REQUEST STATE
+					if (myRequest.readyState == 4)
+						{
+						// CHECKING IF THE DATA IS READY
+						if(myRequest.status == 200)
+							{
+							// PARSING THE COURSE CONTENT FROM STRING TO JSON
+							myJSON = JSON.parse(myRequest.responseText);
+
+							// LOADING THE GAME
+							document.getElementById("content").src = "ClassroomPhaserBoard.htm";
+
+							// SHOWING THE IFRAME
+							document.getElementById("content").style.display = "block";
+							}
+							else
+							{
+							// IF THERE IS A NETWORK ERROR, ANOTHER TRY WILL OCURR IN 1 SECOND
+							setTimeout(function(){loadCourse()}, 1000);
+							}
+						}
+					};
+
+				// EXECUTING THE REQUEST
+				myRequest.send(null);
+				}
+
+			function loadAndPlay(audioSource)
+				{
+				// CHECKING IF THERE IS AN AUDIO PLAYER CREATED TO PLAY THE AUDIO
+				if (currentSlideAudio!=null)
+					{
+					// SETTING THE AUDIO PLAYER SOURCE
+					currentSlideAudio.src = audioSource;
+
+					// SETTING WHAT WILL HAPPEN WHEN THE AUDIO IS BEING LOADED
+					currentSlideAudio.onloadstart = function()
+						{
+						document.getElementById("content").contentWindow.onAudioStartEvent();
+						}
+
+					// SETTING WHAT WILL HAPPEN WHEN THE AUDIO WAS LISTENED
+					currentSlideAudio.onended = function()
+						{
+						document.getElementById("content").contentWindow.onAudioEndEvent();
+						};
+					}
+					else
+					{
+					// IF THERE IS NO AUDIO PLAYER, IT MEANS THAT THE BROWSER WASN'T FAST ENOUGH
+					// TO RESUME THE AUDIO CONTEXT AND CREATE THE AUDIO PLAYER. SO ANOTHER
+					// TRY TO PLAY THE AUDIO WILL OCURR IN 500 MS.
+					setTimeout(function()
+						{
+						loadAndPlay(audioSource);
+						},500);
+					}
 				}
 		</script>
 	</body>
