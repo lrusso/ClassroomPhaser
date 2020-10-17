@@ -63,3 +63,9 @@ Open the **ClassroomPhaserDefault.json** and you will find a similar structure:
 * After playing an audio (if any), it will go to the next slide (if any) or back to the board.
 
 * At the moment, Classroom Phaser allows courses with up to 5 classes.
+
+## Using different courses
+
+* Browsing to **ClassroomPhaser.htm** reads the course data from **ClassroomPhaserDefault.json**.
+
+* Browsing to **ClassroomPhaser.htm?course=example** reads the course data from **example.json**.
