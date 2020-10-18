@@ -150,6 +150,7 @@ Classroom.Main = function (game)
 	this.currentSlideText = null;
 	this.currentSlideImage = [];
 	this.currentSlideImage1TempName = null;
+	this.currentSlideImage2TempName = null;
 	this.currentSlideAudioTimeoutStart = null;
 	this.currentSlideAudioTimeoutEnd = null;
 	this.tempTitleValue = null;
