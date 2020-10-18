@@ -65,7 +65,7 @@ document.addEventListener("mousemove", goBackButtonResetIncrement, false);
 document.addEventListener("touchstart", goBackButtonResetIncrement, false);
 document.addEventListener("touchmove", goBackButtonResetIncrement, false);
 
-// KEEPING TRACK OF USER MOVEMENTS WHILE TAKING A CLASS IN ORDER TO KNOW WHEN TO HIDE OR SHOW ALL THE ICONS
+// KEEPING TRACK OF THE USER MOVEMENTS WHILE TAKING A CLASS IN ORDER TO KNOW WHEN TO HIDE OR SHOW ALL THE ICONS
 setInterval(goBackButtonTimerIncrement, 1000);
 
 // ------------------------------------------------------------------------------------------------------------
