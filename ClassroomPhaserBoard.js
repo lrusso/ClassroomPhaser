@@ -58,14 +58,14 @@ function goBackButtonTimerIncrement()
 		}
 	}
 
-// SETTING FUNCTIONS THAT WILL BE CALLED WHEN THE USER CLICKS, DOUBLE CLICKS OR MOVES THE MOUSE IN ORDER TO SHOW THE SYSTEM ICONS
+// SETTING FUNCTIONS THAT WILL BE CALLED WHEN A MOUSE OR TOUCH EVENT TAKES PLACE IN ORDER TO SHOW THE SYSTEM ICONS
 document.addEventListener("click", goBackButtonResetIncrement, false);
 document.addEventListener("dblclick", goBackButtonResetIncrement, false);
 document.addEventListener("mousemove", goBackButtonResetIncrement, false);
 document.addEventListener("touchstart", goBackButtonResetIncrement, false);
 document.addEventListener("touchmove", goBackButtonResetIncrement, false);
 
-// KEEPING TRACK OF MOUSE CLICKS AND MOVEMENTS WHEN PLAYING IN ORDER TO KNOW WHEN TO HIDE/SHOW ALL THE ICONS
+// KEEPING TRACK OF USER MOVEMENTS WHILE TAKING A CLASS IN ORDER TO KNOW WHEN TO HIDE OR SHOW ALL THE ICONS
 setInterval(goBackButtonTimerIncrement, 1000);
 
 // ------------------------------------------------------------------------------------------------------------
