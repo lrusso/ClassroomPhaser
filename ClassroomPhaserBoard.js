@@ -11,6 +11,62 @@ document.addEventListener("click",fixAudioContext);
 document.addEventListener("touchstart",fixAudioContext);
 
 // ------------------------------------------------------------------------------------------------------------
+// HANDLING THE WINDOW FOCUS AND BLUR EVENTS DURING A CLASS
+// ------------------------------------------------------------------------------------------------------------
+
+var wasAudioPlaying = false;
+
+window.addEventListener("blur", function()
+	{
+	try
+		{
+		// CHECKING IF THE USER IS IN A CLASS
+		if(game.stage.backgroundColor==16777215) // WHITE BACKGROUND
+			{
+			// CHECKING IF CURRENT SLIDE HAS AN AUDIO RESOURCE
+			if (game.state.states["Classroom.Main"].tempAudioValue!=null)
+				{
+				// CHECKING IF CURRENT AUDIO SLIDE IS PAUSED
+				if (parent.currentSlideAudio.paused==false)
+					{
+					// SETTING THAT THE AUDIO WAS PAUSED
+					wasAudioPlaying = true;
+
+					// PAUSING THE AUDIO
+					parent.currentSlideAudio.pause();
+					}
+				}
+			}
+		}
+		catch(err)
+		{
+		}
+	});
+
+window.addEventListener("focus", function()
+	{
+	try
+		{
+		// CHECKING IF THE USER IS IN A CLASS
+		if(game.stage.backgroundColor==16777215) // WHITE BACKGROUND
+			{
+			// CHECKING IF CURRENT SLIDE HAS AN AUDIO RESOURCE
+			if (game.state.states["Classroom.Main"].tempAudioValue!=null)
+				{
+				// RESTORING THE DEFAULT VALUE
+				wasAudioPlaying = false;
+
+				// RESUMING THE AUDIO
+				parent.currentSlideAudio.play();
+				}
+			}
+		}
+		catch(err)
+		{
+		}
+	});
+
+// ------------------------------------------------------------------------------------------------------------
 // CLASSROOM SCRIPT
 // ------------------------------------------------------------------------------------------------------------
 
