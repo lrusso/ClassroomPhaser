@@ -11,64 +11,6 @@ document.addEventListener("click",fixAudioContext);
 document.addEventListener("touchstart",fixAudioContext);
 
 // ------------------------------------------------------------------------------------------------------------
-// HANDLING THE MOUSE AND TOUCH EVENTS TO SHOW OR HIDE THE CONTROLS
-// ------------------------------------------------------------------------------------------------------------
-
-var MOVEMENTS_IDLE = 0;
-
-function goBackButtonResetIncrement()
-	{
-	try
-		{
-		// CHECKING IF THE USER IS ON A CLASS
-		if(game.stage.backgroundColor == 16777215) // WHITE
-			{
-			// CLEARING THE MOVEMENTS IDLE TIMER
-			MOVEMENTS_IDLE = 0;
-
-			// SHOWING THE CONTROLS
-			game.state.states["Classroom.Main"].showControls();
-			}
-		}
-		catch(err)
-		{
-		}
-	}
-
-function goBackButtonTimerIncrement()
-	{
-	try
-		{
-		// CHECKING IF THE USER IS ON A CLASS
-		if(game.stage.backgroundColor == 16777215) // WHITE
-			{
-			// UPDATING THE MOVEMENTS IDLE TIMER
-			MOVEMENTS_IDLE = MOVEMENTS_IDLE + 1;
-
-			// CHECKING THE MOVEMENTS IDLE TIMER IS EQUAL OR GREATER THAN 3 SECONDS
-			if(MOVEMENTS_IDLE >= 3)
-				{
-				// HIDING THE CONTROLS
-				game.state.states["Classroom.Main"].hideControls();
-				}
-			}
-		}
-		catch(err)
-		{
-		}
-	}
-
-// SETTING FUNCTIONS THAT WILL BE CALLED WHEN A MOUSE OR TOUCH EVENT TAKES PLACE IN ORDER TO SHOW THE SYSTEM ICONS
-document.addEventListener("click", goBackButtonResetIncrement, false);
-document.addEventListener("dblclick", goBackButtonResetIncrement, false);
-document.addEventListener("mousemove", goBackButtonResetIncrement, false);
-document.addEventListener("touchstart", goBackButtonResetIncrement, false);
-document.addEventListener("touchmove", goBackButtonResetIncrement, false);
-
-// KEEPING TRACK OF THE USER MOVEMENTS WHILE TAKING A CLASS IN ORDER TO KNOW WHEN TO HIDE OR SHOW ALL THE ICONS
-setInterval(goBackButtonTimerIncrement, 1000);
-
-// ------------------------------------------------------------------------------------------------------------
 // CLASSROOM SCRIPT
 // ------------------------------------------------------------------------------------------------------------
 
@@ -496,64 +438,6 @@ Classroom.Main.prototype = {
 		this.showBoard();
 		},
 
-	hideControls: function()
-		{
-		// CHECKING IF THE USER IS ON A CLASS
-		if(game.stage.backgroundColor == 16777215) // WHITE
-			{
-			// HIDING THE BACK ICON
-			this.goBackIcon.visible = false;
-			this.goBackIconShadow.visible = false;
-
-			// HIDING THE PREV SLIDE ICON
-			this.prevSlideIcon.visible = false;
-			this.prevSlideIconShadow.visible = false;
-
-			// HIDING THE NEXT SLIDE ICON
-			this.nextSlideIcon.visible = false;
-			this.nextSlideIconShadow.visible = false;
-			}
-		},
-
-	showControls: function()
-		{
-		// CHECKING IF THE USER IS ON A CLASS
-		if(game.stage.backgroundColor == 16777215) // WHITE
-			{
-			// SHOWING THE GO BACK ICON
-			this.goBackIcon.visible = true;
-			this.goBackIconShadow.visible = true;
-
-			// CHECKING IF IT IS THE FIRST SLIDE
-			if(this.currentSlide==0)
-				{
-				// HIDING THE PREV SLIDE ICON
-				this.prevSlideIcon.visible = false;
-				this.prevSlideIconShadow.visible = false;
-				}
-				else
-				{
-				// SHOWING THE PREV SLIDE ICON
-				this.prevSlideIcon.visible = true;
-				this.prevSlideIconShadow.visible = true;
-				}
-
-			// CHECKING IF THE CURRENT SLIDE IS THE LAST SLIDE
-			if(this.currentSlide==this.classData.length -1)
-				{
-				// HIDING THE NEXT SLIDE ICON
-				this.nextSlideIcon.visible = false;
-				this.nextSlideIconShadow.visible = false;
-				}
-				else
-				{
-				// SHOWING THE NEXT SLIDE ICON
-				this.nextSlideIcon.visible = true;
-				this.nextSlideIconShadow.visible = true;
-				}
-			}
-		},
-
 	prevSlide: function()
 		{
 		try
@@ -627,6 +511,34 @@ Classroom.Main.prototype = {
 			// CLEARING ANY PREVIOUS CLASS
 			this.clearPreviousClass();
 
+			// CHECKING IF IT IS THE FIRST SLIDE
+			if (this.currentSlide==0)
+				{
+				// HIDING THE PREV SLIDE ICON
+				this.prevSlideIcon.visible = false;
+				this.prevSlideIconShadow.visible = false;
+				}
+				else
+				{
+				// SHOWING THE PREV SLIDE ICON
+				this.prevSlideIcon.visible = true;
+				this.prevSlideIconShadow.visible = true;
+				}
+
+			// CHECKING IF THE CURRENT SLIDE IS THE LAST SLIDE
+			if (this.currentSlide==this.classData.length -1)
+				{
+				// HIDING THE NEXT SLIDE ICON
+				this.nextSlideIcon.visible = false;
+				this.nextSlideIconShadow.visible = false;
+				}
+				else
+				{
+				// SHOWING THE NEXT SLIDE ICON
+				this.nextSlideIcon.visible = true;
+				this.nextSlideIconShadow.visible = true;
+				}
+
 			// GETTING THE SLIDE VALUES
 			this.tempTitleValue = this.classData[this.currentSlide][1];
 			this.tempTitleColor = this.classData[this.currentSlide][0];
@@ -699,6 +611,12 @@ Classroom.Main.prototype = {
 		if(this.class5!=null){this.class5.visible = false;}
 		if(this.class5block!=null){this.class5block.visible = false;}
 		if(this.tip!=null){this.tip.visible = false;}
+		this.goBackIcon.visible = true;
+		this.goBackIconShadow.visible = true;
+		this.prevSlideIcon.visible = true;
+		this.prevSlideIconShadow.visible = true;
+		this.nextSlideIcon.visible = true;
+		this.nextSlideIconShadow.visible = true;
 		},
 
 	showBoard: function()
@@ -716,6 +634,12 @@ Classroom.Main.prototype = {
 		if(this.class5!=null){this.class5.visible = true;}
 		if(this.class5block!=null){this.class5block.visible = true;}
 		if(this.tip!=null){this.tip.visible = true;}
+		this.goBackIcon.visible = false;
+		this.goBackIconShadow.visible = false;
+		this.prevSlideIcon.visible = false;
+		this.prevSlideIconShadow.visible = false;
+		this.nextSlideIcon.visible = false;
+		this.nextSlideIconShadow.visible = false;
 		},
 
 	clearPreviousClass: function()
