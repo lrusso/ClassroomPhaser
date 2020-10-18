@@ -266,6 +266,7 @@ Classroom.Main.prototype = {
 		this.nextSlideIcon.input.useHandCursor = true;
 		this.nextSlideIcon.events.onInputUp.add(function()
 			{
+			// SHOWING THE NEXT SLIDE AND SETTING THAT IT IS A MANUAL EVENT
 			this.nextSlide(false);
 			}, this);
 
@@ -460,7 +461,7 @@ Classroom.Main.prototype = {
 		// SETTING THE INITIAL SLIDE
 		this.currentSlide = -1;
 
-		// SHOWING THE NEXT SLIDE
+		// SHOWING THE NEXT SLIDE AND SETTING THAT IT IS A MANUAL EVENT
 		this.nextSlide(false);
 
 		// HIDING THE TOAST
@@ -610,7 +611,7 @@ Classroom.Main.prototype = {
 				// UPDATING THE CURRENT SLIDE VALUE
 				this.currentSlide = this.currentSlide + 1;
 
-				// SHOWING THE BOARD
+				// SHOWING THE BOARD WITH THE RECEIVED AUTOMATIC VALUE
 				this.showSlide(automatic);
 				}
 			}
@@ -671,8 +672,10 @@ Classroom.Main.prototype = {
 				this.validateAudio();
 				}
 
-			if (automatic==false)
+			// CHECKING IF THE SLIDE WAS SHOWN AUTOMATICALLY
+			if(automatic==false)
 				{
+				// SHOWING THE CONTROLS
 				this.showControls();
 				}
 			}
@@ -860,7 +863,7 @@ function onAudioEndEvent()
 				}
 				else
 				{
-				// SHOWING THE NEXT SLIDE
+				// SHOWING THE NEXT SLIDE AND SETTING THAT IT IS AN AUTOMATIC EVENT
 				game.state.states["Classroom.Main"].nextSlide(true);
 				}
 			}
