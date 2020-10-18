@@ -21,7 +21,7 @@ function goBackButtonResetIncrement()
 	try
 		{
 		// CHECKING IF THE USER IS ON A CLASS
-		if (game.stage.backgroundColor == 16777215) // WHITE
+		if(game.stage.backgroundColor == 16777215) // WHITE
 			{
 			// CLEARING THE MOVEMENTS IDLE TIMER
 			MOVEMENTS_IDLE = 0;
@@ -40,13 +40,13 @@ function goBackButtonTimerIncrement()
 	try
 		{
 		// CHECKING IF THE USER IS ON A CLASS
-		if (game.stage.backgroundColor == 16777215) // WHITE
+		if(game.stage.backgroundColor == 16777215) // WHITE
 			{
 			// UPDATING THE MOVEMENTS IDLE TIMER
 			MOVEMENTS_IDLE = MOVEMENTS_IDLE + 1;
 
 			// CHECKING THE MOVEMENTS IDLE TIMER IS EQUAL OR GREATER THAN 3 SECONDS
-			if (MOVEMENTS_IDLE >= 3)
+			if(MOVEMENTS_IDLE >= 3)
 				{
 				// HIDING THE CONTROLS
 				game.state.states["Classroom.Main"].hideControls();
@@ -197,14 +197,14 @@ Classroom.Main.prototype = {
 			var finalY = 432 / 2 - image.height / 2; 
 
 			// CHECKING IF THERE IS A TITLE IN THE SLIDE
-			if (this.currentSlideTitle!=null)
+			if(this.currentSlideTitle!=null)
 				{
 				// UPDATING THE FINAL Y VALUE FOR THE IMAGE IN ORDER TO BE CENTERED INCLUDING THE TITLE HEIGHT
 				finalY = finalY + this.currentSlideTitle.height / 5;
 				}
 
 			// CHECKING IF THERE IS A TEXT IN THE SLIDE
-			if (this.currentSlideText!=null)
+			if(this.currentSlideText!=null)
 				{
 				// UPDATING THE FINAL Y VALUE FOR THE IMAGE IN ORDER TO BE CENTERED INCLUDING THE TEXT HEIGHT
 				finalY = finalY + this.currentSlideText.height / 3;
@@ -271,7 +271,7 @@ Classroom.Main.prototype = {
 			}, this);
 
 		// CHECKING IF THERE IS A COURSE TITLE
-		if (parent.myJSON.STRING_COURSE!="")
+		if(parent.myJSON.STRING_COURSE!="")
 			{
 			// ADDING THE COURSE TITLE
 			this.course = game.add.text(0, 0, " " + parent.myJSON.STRING_COURSE + " ", { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -281,7 +281,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A FIRST CLASS
-		if (parent.myJSON.STRING_CLASS1!=null)
+		if(parent.myJSON.STRING_CLASS1!=null)
 			{
 			// ADDING THE FIRST CLASS
 			this.class1 = game.add.text(80, 115, parent.myJSON.STRING_CLASS1 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -294,7 +294,7 @@ Classroom.Main.prototype = {
 			this.class1block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (parent.myJSON.STRING_CLASS1_CONTENT.length>0)
+				if(parent.myJSON.STRING_CLASS1_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = parent.myJSON.STRING_CLASS1_CONTENT;
@@ -306,7 +306,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A SECOND CLASS
-		if (parent.myJSON.STRING_CLASS2!=null)
+		if(parent.myJSON.STRING_CLASS2!=null)
 			{
 			// ADDING THE SECOND CLASS
 			this.class2 = game.add.text(80, 155, parent.myJSON.STRING_CLASS2 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -319,7 +319,7 @@ Classroom.Main.prototype = {
 			this.class2block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (parent.myJSON.STRING_CLASS2_CONTENT.length>0)
+				if(parent.myJSON.STRING_CLASS2_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = parent.myJSON.STRING_CLASS2_CONTENT;
@@ -331,7 +331,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A THIRD CLASS
-		if (parent.myJSON.STRING_CLASS3!=null)
+		if(parent.myJSON.STRING_CLASS3!=null)
 			{
 			// ADDING THE THIRD CLASS
 			this.class3 = game.add.text(80, 195, parent.myJSON.STRING_CLASS3 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -344,7 +344,7 @@ Classroom.Main.prototype = {
 			this.class3block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (parent.myJSON.STRING_CLASS3_CONTENT.length>0)
+				if(parent.myJSON.STRING_CLASS3_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = parent.myJSON.STRING_CLASS3_CONTENT;
@@ -356,7 +356,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A FOURTH CLASS
-		if (parent.myJSON.STRING_CLASS4!=null)
+		if(parent.myJSON.STRING_CLASS4!=null)
 			{
 			// ADDING THE FOURTH CLASS
 			this.class4 = game.add.text(80, 235, parent.myJSON.STRING_CLASS4 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -369,7 +369,7 @@ Classroom.Main.prototype = {
 			this.class4block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (parent.myJSON.STRING_CLASS4_CONTENT.length>0)
+				if(parent.myJSON.STRING_CLASS4_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = parent.myJSON.STRING_CLASS4_CONTENT;
@@ -381,7 +381,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A FIFTH CLASS
-		if (parent.myJSON.STRING_CLASS5!=null)
+		if(parent.myJSON.STRING_CLASS5!=null)
 			{
 			// ADDING THE FIFTH CLASS
 			this.class5 = game.add.text(80, 275, parent.myJSON.STRING_CLASS5 + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -394,7 +394,7 @@ Classroom.Main.prototype = {
 			this.class5block.events.onInputUp.add(function()
 				{
 				// CHECKING IF THE CLASS HAS CONTENT
-				if (parent.myJSON.STRING_CLASS5_CONTENT.length>0)
+				if(parent.myJSON.STRING_CLASS5_CONTENT.length>0)
 					{
 					// SETTING THE CLASS CONTENT
 					this.classData = parent.myJSON.STRING_CLASS5_CONTENT;
@@ -406,7 +406,7 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THERE IS A TIP
-		if (parent.myJSON.STRING_TIP!=null)
+		if(parent.myJSON.STRING_TIP!=null)
 			{
 			// ADDING THE TIP
 			this.tip = game.add.text(0, 0, " " + parent.myJSON.STRING_TIP + " ", { font: "bold 20px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
@@ -416,10 +416,10 @@ Classroom.Main.prototype = {
 			}
 
 		// CHECKING IF THE SPLASH MUST BE DISPLAYED
-		if (this.splash==true)
+		if(this.splash==true)
 			{
 			// CHECKING IF THERE IS AN ABOUT
-			if (parent.myJSON.STRING_ABOUT!=null)
+			if(parent.myJSON.STRING_ABOUT!=null)
 				{
 				// ADDING THE SPLASH
 				this.toastShadow = game.add.graphics();
@@ -499,7 +499,7 @@ Classroom.Main.prototype = {
 	hideControls: function()
 		{
 		// CHECKING IF THE USER IS ON A CLASS
-		if (game.stage.backgroundColor == 16777215) // WHITE
+		if(game.stage.backgroundColor == 16777215) // WHITE
 			{
 			// HIDING THE BACK ICON
 			this.goBackIcon.visible = false;
@@ -518,14 +518,14 @@ Classroom.Main.prototype = {
 	showControls: function()
 		{
 		// CHECKING IF THE USER IS ON A CLASS
-		if (game.stage.backgroundColor == 16777215) // WHITE
+		if(game.stage.backgroundColor == 16777215) // WHITE
 			{
 			// SHOWING THE GO BACK ICON
 			this.goBackIcon.visible = true;
 			this.goBackIconShadow.visible = true;
 
 			// CHECKING IF IT IS THE FIRST SLIDE
-			if (this.currentSlide==0)
+			if(this.currentSlide==0)
 				{
 				// HIDING THE PREV SLIDE ICON
 				this.prevSlideIcon.visible = false;
@@ -539,7 +539,7 @@ Classroom.Main.prototype = {
 				}
 
 			// CHECKING IF THE CURRENT SLIDE IS THE LAST SLIDE
-			if (this.currentSlide==this.classData.length -1)
+			if(this.currentSlide==this.classData.length -1)
 				{
 				// HIDING THE NEXT SLIDE ICON
 				this.nextSlideIcon.visible = false;
@@ -559,21 +559,21 @@ Classroom.Main.prototype = {
 		try
 			{
 			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT START
-			if (this.currentSlideAudioTimeoutStart!=null)
+			if(this.currentSlideAudioTimeoutStart!=null)
 				{
 				// CLEARING THE AUDIO SLIDE TIMEOUT START
 				clearTimeout(this.currentSlideAudioTimeoutStart);
 				}
 
 			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT END
-			if (this.currentSlideAudioTimeoutEnd!=null)
+			if(this.currentSlideAudioTimeoutEnd!=null)
 				{
 				// CLEARING THE AUDIO SLIDE TIMEOUT END
 				clearTimeout(this.currentSlideAudioTimeoutEnd);
 				}
 
 			// CHECKING IF THERE IS A CLASSDATA
-			if (this.classData!=null)
+			if(this.classData!=null)
 				{
 				// UPDATING THE CURRENT SLIDE VALUE
 				this.currentSlide = this.currentSlide - 1;
@@ -592,21 +592,21 @@ Classroom.Main.prototype = {
 		try
 			{
 			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT START
-			if (this.currentSlideAudioTimeoutStart!=null)
+			if(this.currentSlideAudioTimeoutStart!=null)
 				{
 				// CLEARING THE AUDIO SLIDE TIMEOUT START
 				clearTimeout(this.currentSlideAudioTimeoutStart);
 				}
 
 			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT END
-			if (this.currentSlideAudioTimeoutEnd!=null)
+			if(this.currentSlideAudioTimeoutEnd!=null)
 				{
 				// CLEARING THE AUDIO SLIDE TIMEOUT END
 				clearTimeout(this.currentSlideAudioTimeoutEnd);
 				}
 
 			// CHECKING IF THERE IS A CLASSDATA
-			if (this.classData!=null)
+			if(this.classData!=null)
 				{
 				// UPDATING THE CURRENT SLIDE VALUE
 				this.currentSlide = this.currentSlide + 1;
@@ -636,7 +636,7 @@ Classroom.Main.prototype = {
 			this.tempAudioValue = this.classData[this.currentSlide][5];
 
 			// CHECKING IF THERE IS A TITLE
-			if (this.tempTitleValue!=null)
+			if(this.tempTitleValue!=null)
 				{
 				// ADDING THE SLIDE TITLE
 				this.currentSlideTitle = game.add.text(0, 0, " " + this.tempTitleValue + " ", { font: "bold 26px Arial", fill: this.tempTitleColor, boundsAlignH: "center", boundsAlignV: "middle" });
@@ -646,7 +646,7 @@ Classroom.Main.prototype = {
 				}
 
 			// CHECKING IF THERE IS A TEXT
-			if (this.tempTextValue!=null)
+			if(this.tempTextValue!=null)
 				{
 				// ADDING THE SLIDE TEXT
 				this.currentSlideText = game.add.text(0, 0, this.tempTextValue, { font: "normal 20px Arial", fill: this.tempTextColor, boundsAlignH: "left", boundsAlignV: "top", wordWrap: true, wordWrapWidth: 770 });
@@ -655,7 +655,7 @@ Classroom.Main.prototype = {
 				}
 
 			// CHECKING IF THERE IS A IMAGE
-			if (this.tempImageValue!=null)
+			if(this.tempImageValue!=null)
 				{
 				// SETTING A RANDOM TEMP IMAGE NAME
 				this.currentSlideImageTempName = "tempImage" + Date.now();
@@ -723,14 +723,14 @@ Classroom.Main.prototype = {
 		try
 			{
 			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT START
-			if (this.currentSlideAudioTimeoutStart!=null)
+			if(this.currentSlideAudioTimeoutStart!=null)
 				{
 				// CLEARING THE AUDIO SLIDE TIMEOUT START
 				clearTimeout(this.currentSlideAudioTimeoutStart);
 				}
 
 			// CHECKING IF THERE IS AN AUDIO SLIDE TIMEOUT END
-			if (this.currentSlideAudioTimeoutEnd!=null)
+			if(this.currentSlideAudioTimeoutEnd!=null)
 				{
 				// CLEARING THE AUDIO SLIDE TIMEOUT END
 				clearTimeout(this.currentSlideAudioTimeoutEnd);
@@ -740,7 +740,7 @@ Classroom.Main.prototype = {
 			try{parent.currentSlideAudio.pause()}catch(err){}
 
 			// CHECKING IF THERE IS A SLIDE TITLE
-			if (this.currentSlideTitle!=null)
+			if(this.currentSlideTitle!=null)
 				{
 				// DESTROYING THE SLIDE TITLE
 				this.currentSlideTitle.destroy();
@@ -748,7 +748,7 @@ Classroom.Main.prototype = {
 				}
 
 			// CHECKING IF THERE IS A SLIDE TEXT
-			if (this.currentSlideText!=null)
+			if(this.currentSlideText!=null)
 				{
 				// DESTROYING THE SLIDE TEXT
 				this.currentSlideText.destroy();
@@ -766,7 +766,7 @@ Classroom.Main.prototype = {
 			this.currentSlideImage = [];
 
 			// CHECKING IF THERE IS A TEMPORARY IMAGE RESOURCE TO REMOVE
-			if (this.currentSlideImageTempName!=null)
+			if(this.currentSlideImageTempName!=null)
 				{
 				// REMOVING FILE REFERENCE
 				this.load.removeFile("image",this.currentSlideImageTempName);
@@ -788,7 +788,7 @@ Classroom.Main.prototype = {
 		try
 			{
 			// CHECKING IF THE CURRENT SLIDE HAS AN AUDIO RESOURCE
-			if (this.tempAudioValue!=null)
+			if(this.tempAudioValue!=null)
 				{
 				parent.loadAndPlay(this.tempAudioValue);
 				}
@@ -853,10 +853,10 @@ function onAudioEndEvent()
 	game.state.states["Classroom.Main"].currentSlideAudioTimeoutEnd = setTimeout(function()
 		{
 		// CHECKING IF THE USER IS NOT AT THE BOARD
-		if (game.stage.backgroundColor != "#275077")
+		if(game.stage.backgroundColor != "#275077")
 			{
 			// CHECKING IF THE CURRENT SLIDE IS THE LAST SLIDE
-			if (game.state.states["Classroom.Main"].currentSlide==game.state.states["Classroom.Main"].classData.length -1)
+			if(game.state.states["Classroom.Main"].currentSlide==game.state.states["Classroom.Main"].classData.length -1)
 				{
 				// GOING BACK TO THE BOARD
 				game.state.states["Classroom.Main"].goBack();
