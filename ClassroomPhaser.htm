@@ -132,8 +132,8 @@
 							// PARSING THE COURSE CONTENT FROM STRING TO JSON
 							myJSON = JSON.parse(myRequest.responseText);
 
-							// LOADING THE GAME
-							document.getElementById("content").src = "ClassroomPhaserBoard.htm";
+							// LOADING THE CLASSROOM
+							document.getElementById("content").contentDocument.location.replace("ClassroomPhaserBoard.htm");
 
 							// SHOWING THE IFRAME
 							document.getElementById("content").style.display = "block";
