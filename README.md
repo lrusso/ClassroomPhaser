@@ -66,9 +66,9 @@ Open the **ClassroomPhaserDefault.json** and you will find a similar structure:
 
 * If the slide has an image but no text, the image will be centered vertically.
 
-* After playing an audio (if any), it will go to the next slide (if any) or back to the board.
-
 * In the example above, the third slide has a second image and a delay to show it.
+
+* After playing an audio (if any), it will go to the next slide (if any) or back to the board.
 
 * At the moment, Classroom Phaser allows courses with up to 5 classes.
 
