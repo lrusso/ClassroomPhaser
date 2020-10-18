@@ -149,14 +149,17 @@ Classroom.Main = function (game)
 	this.currentSlideTitle = null;
 	this.currentSlideText = null;
 	this.currentSlideImage = [];
-	this.currentSlideImageTempName = null;
+	this.currentSlideImage1TempName = null;
 	this.currentSlideAudioTimeoutStart = null;
 	this.currentSlideAudioTimeoutEnd = null;
 	this.tempTitleValue = null;
 	this.tempTitleColor = null;
 	this.tempTextValue = null;
 	this.tempTextColor = null;
-	this.tempImageValue = null;
+	this.tempImage1Value = null;
+	this.tempImage2Value = null;
+	this.tempImage2Timeout = null;
+	this.tempImageDelay = null;
 	this.tempAudioValue = null;
 
 	// SCALING THE CANVAS SIZE FOR THE CLASSROOM
@@ -189,7 +192,7 @@ Classroom.Main.prototype = {
 		game.load.onLoadComplete.add(function()
 			{
 			// READING THE SLIDE IMAGE
-			var image = game.cache.getImage(this.currentSlideImageTempName);
+			var image = game.cache.getImage(this.currentSlideImage1TempName);
 
 			// SETTING THE FINAL Y VALUE FOR THE IMAGE
 			var finalY = 432 / 2 - image.height / 2; 
@@ -209,7 +212,7 @@ Classroom.Main.prototype = {
 				}
 
 			// ADDING THE LOADED SLIDE IMAGE
-			var mySlideImage = game.add.sprite(800 / 2 - image.width / 2, finalY, this.currentSlideImageTempName);
+			var mySlideImage = game.add.sprite(800 / 2 - image.width / 2, finalY, this.currentSlideImage1TempName);
 			mySlideImage.alpha = 0;
 
 			// ADDING THE SLIDE IMAGE REFERENCE IN ORDER TO DESTROY IT LATER
@@ -512,6 +515,13 @@ Classroom.Main.prototype = {
 				clearTimeout(this.currentSlideAudioTimeoutEnd);
 				}
 
+			// CHECKING IF THERE IS A SECOND IMAGE TIMEOUT
+			if(this.tempImage2Timeout!=null)
+				{
+				// CLEARING THE SECOND IMAGE TIMEOUT
+				clearTimeout(this.tempImage2Timeout);
+				}
+
 			// CHECKING IF THERE IS A CLASSDATA
 			if(this.classData!=null)
 				{
@@ -543,6 +553,13 @@ Classroom.Main.prototype = {
 				{
 				// CLEARING THE AUDIO SLIDE TIMEOUT END
 				clearTimeout(this.currentSlideAudioTimeoutEnd);
+				}
+
+			// CHECKING IF THERE IS A SECOND IMAGE TIMEOUT
+			if(this.tempImage2Timeout!=null)
+				{
+				// CLEARING THE SECOND IMAGE TIMEOUT
+				clearTimeout(this.tempImage2Timeout);
 				}
 
 			// CHECKING IF THERE IS A CLASSDATA
@@ -600,8 +617,10 @@ Classroom.Main.prototype = {
 			this.tempTitleColor = this.classData[this.currentSlide][0];
 			this.tempTextValue = this.classData[this.currentSlide][3];
 			this.tempTextColor = this.classData[this.currentSlide][2];
-			this.tempImageValue = this.classData[this.currentSlide][4];
-			this.tempAudioValue = this.classData[this.currentSlide][5];
+			this.tempImage1Value = this.classData[this.currentSlide][4];
+			this.tempImage2Value = this.classData[this.currentSlide][5];
+			this.tempImageDelay = this.classData[this.currentSlide][6];
+			this.tempAudioValue = this.classData[this.currentSlide][7];
 
 			// CHECKING IF THERE IS A TITLE
 			if(this.tempTitleValue!=null)
@@ -623,13 +642,23 @@ Classroom.Main.prototype = {
 				}
 
 			// CHECKING IF THERE IS A IMAGE
-			if(this.tempImageValue!=null)
+			if(this.tempImage1Value!=null)
 				{
 				// SETTING A RANDOM TEMP IMAGE NAME
-				this.currentSlideImageTempName = "tempImage" + Date.now();
+				this.currentSlideImage1TempName = "tempImage" + Date.now();
 
 				// ADDING THE SLIDE IMAGE
-				game.load.image(this.currentSlideImageTempName, this.tempImageValue);
+				game.load.image(this.currentSlideImage1TempName, this.tempImage1Value);
+
+				// CHECKING IF THERE IS A SECOND IMAGE
+				if(this.tempImage2Value!=null)
+					{
+					// SETTING A RANDOM TEMP IMAGE NAME
+					this.currentSlideImage2TempName = "tempImage" + (Date.now() + 1);
+
+					// ADDING THE SLIDE IMAGE
+					game.load.image(this.currentSlideImage2TempName, this.tempImage2Value);
+					}
 
 				// STARTING THE IMAGE SLIDE LOADING
 				game.load.start();
@@ -709,6 +738,13 @@ Classroom.Main.prototype = {
 				clearTimeout(this.currentSlideAudioTimeoutEnd);
 				}
 
+			// CHECKING IF THERE IS A SECOND IMAGE TIMEOUT
+			if(this.tempImage2Timeout!=null)
+				{
+				// CLEARING THE SECOND IMAGE TIMEOUT
+				clearTimeout(this.tempImage2Timeout);
+				}
+
 			// PAUSING THE SLIDE AUDIO (IF ANY)
 			try{parent.currentSlideAudio.pause()}catch(err){}
 
@@ -739,16 +775,30 @@ Classroom.Main.prototype = {
 			this.currentSlideImage = [];
 
 			// CHECKING IF THERE IS A TEMPORARY IMAGE RESOURCE TO REMOVE
-			if(this.currentSlideImageTempName!=null)
+			if(this.currentSlideImage1TempName!=null)
 				{
 				// REMOVING FILE REFERENCE
-				this.load.removeFile("image",this.currentSlideImageTempName);
+				this.load.removeFile("image",this.currentSlideImage1TempName);
 
 				// CLEARING CACHE
-				this.cache.removeImage(this.currentSlideImageTempName);
+				this.cache.removeImage(this.currentSlideImage1TempName);
 
 				// CLEARING VARIABLE
-				this.currentSlideImageTempName = null;
+				this.currentSlideImage1TempName = null;
+				}
+
+
+			// CHECKING IF THERE IS A TEMPORARY IMAGE RESOURCE TO REMOVE
+			if(this.currentSlideImage2TempName!=null)
+				{
+				// REMOVING FILE REFERENCE
+				this.load.removeFile("image",this.currentSlideImage2TempName);
+
+				// CLEARING CACHE
+				this.cache.removeImage(this.currentSlideImage2TempName);
+
+				// CLEARING VARIABLE
+				this.currentSlideImage2TempName = null;
 				}
 			}
 			catch(err)
@@ -795,10 +845,52 @@ Classroom.Main.prototype = {
 				}
 
 			// CHECKING IF THERE IS A SLIDE IMAGE
-			if(this.tempImageValue.length>0)
+			if(this.tempImage1Value.length>0)
 				{
 				// IMPLEMENTING A FADE IN EFFECT IN THE SLIDE IMAGE
 				game.add.tween(this.currentSlideImage[0]).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true);
+				}
+
+			// CHECKING IF THERE IS A SECOND IMAGE
+			if (this.tempImage2Value!=null)
+				{
+				// CREATING A TEMP REFERENCE OF THE CLASS
+				var tempRef = this;
+
+				// SETTING A TIMEOUT FOR SHOWING THE SECOND SLIDE
+				this.tempImage2Timeout = setTimeout(function()
+					{
+					// READING THE SLIDE SECOND IMAGE
+					var image = game.cache.getImage(tempRef.currentSlideImage2TempName);
+
+					// SETTING THE FINAL Y VALUE FOR THE SECOND IMAGE
+					var finalY = 432 / 2 - image.height / 2; 
+
+					// CHECKING IF THERE IS A TITLE IN THE SLIDE
+					if(tempRef.currentSlideTitle!=null)
+						{
+						// UPDATING THE FINAL Y VALUE FOR THE IMAGE IN ORDER TO BE CENTERED INCLUDING THE TITLE HEIGHT
+						finalY = finalY + tempRef.currentSlideTitle.height / 5;
+						}
+
+					// CHECKING IF THERE IS A TEXT IN THE SLIDE
+					if(tempRef.currentSlideText!=null)
+						{
+						// UPDATING THE FINAL Y VALUE FOR THE IMAGE IN ORDER TO BE CENTERED INCLUDING THE TEXT HEIGHT
+						finalY = finalY + tempRef.currentSlideText.height / 3;
+						}
+
+					// ADDING THE LOADED SLIDE SECOND IMAGE
+					var mySlideImage = game.add.sprite(800 / 2 - image.width / 2, finalY, tempRef.currentSlideImage2TempName);
+					mySlideImage.alpha = 0;
+
+					// ADDING THE SLIDE SECOND IMAGE REFERENCE IN ORDER TO DESTROY IT LATER
+					tempRef.currentSlideImage.push(mySlideImage);
+
+					// IMPLEMENTING A FADE IN EFFECT IN THE SLIDE SECOND IMAGE
+					game.add.tween(tempRef.currentSlideImage[1]).to({alpha: 1}, 1000, Phaser.Easing.Linear.None, true);
+
+					},this.tempImageDelay);
 				}
 			}
 			catch(err)
