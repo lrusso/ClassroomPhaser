@@ -208,8 +208,8 @@ Classroom.Main.prototype = {
 		this.nextSlideIcon.input.useHandCursor = true;
 		this.nextSlideIcon.events.onInputUp.add(function()
 			{
-			// SHOWING THE NEXT SLIDE AND SETTING THAT IT IS A MANUAL EVENT
-			this.nextSlide(false);
+			// SHOWING THE NEXT SLIDE
+			this.nextSlide();
 			}, this);
 
 		// CHECKING IF THERE IS A COURSE TITLE
@@ -403,8 +403,8 @@ Classroom.Main.prototype = {
 		// SETTING THE INITIAL SLIDE
 		this.currentSlide = -1;
 
-		// SHOWING THE NEXT SLIDE AND SETTING THAT IT IS A MANUAL EVENT
-		this.nextSlide(false);
+		// SHOWING THE NEXT SLIDE
+		this.nextSlide();
 
 		// HIDING THE TOAST
 		if(this.toastText!=null){this.toastText.visible = false;}
@@ -463,7 +463,7 @@ Classroom.Main.prototype = {
 				this.currentSlide = this.currentSlide - 1;
 
 				// SHOWING THE BOARD
-				this.showSlide(false);
+				this.showSlide();
 				}
 			}
 			catch(err)
@@ -471,7 +471,7 @@ Classroom.Main.prototype = {
 			}
 		},
 
-	nextSlide: function(automatic)
+	nextSlide: function()
 		{
 		try
 			{
@@ -495,8 +495,8 @@ Classroom.Main.prototype = {
 				// UPDATING THE CURRENT SLIDE VALUE
 				this.currentSlide = this.currentSlide + 1;
 
-				// SHOWING THE BOARD WITH THE RECEIVED AUTOMATIC VALUE
-				this.showSlide(automatic);
+				// SHOWING THE BOARD
+				this.showSlide();
 				}
 			}
 			catch(err)
@@ -504,7 +504,7 @@ Classroom.Main.prototype = {
 			}
 		},
 
-	showSlide: function(automatic)
+	showSlide: function()
 		{
 		try
 			{
@@ -582,13 +582,6 @@ Classroom.Main.prototype = {
 				{
 				// CHECKING IF CURRENT SLIDE HAS AN AUDIO RESOURCE
 				this.validateAudio();
-				}
-
-			// CHECKING IF THE SLIDE WAS SHOWN AUTOMATICALLY
-			if(automatic==false)
-				{
-				// SHOWING THE CONTROLS
-				this.showControls();
 				}
 			}
 			catch(err)
@@ -787,8 +780,8 @@ function onAudioEndEvent()
 				}
 				else
 				{
-				// SHOWING THE NEXT SLIDE AND SETTING THAT IT IS AN AUTOMATIC EVENT
-				game.state.states["Classroom.Main"].nextSlide(true);
+				// SHOWING THE NEXT SLIDE
+				game.state.states["Classroom.Main"].nextSlide();
 				}
 			}
 		}, 700);
