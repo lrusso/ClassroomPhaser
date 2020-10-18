@@ -68,7 +68,7 @@ Open the **ClassroomPhaserDefault.json** and you will find a similar structure:
 
 * After playing an audio (if any), it will go to the next slide (if any) or back to the board.
 
-* In the JSON example, in third slide, you can see a second image URL and the delay to show it.
+* In the JSON example, in third slide, you can see a second image and the delay to show it.
 
 * At the moment, Classroom Phaser allows courses with up to 5 classes.
 
