@@ -22,18 +22,24 @@ Open the **ClassroomPhaserDefault.json** and you will find a similar structure:
                             "#000000", "My black color Title in the first slide",
                             "#0000FF", "My blue color Text in the first slide explaining something.",
                             "https://www.example.com/image1.jpg",
+                            null,
+                            null,
                             "https://www.example.com/audio1.mp3"
                             ],
                             [
                             "#008000", "My green color Title in the second slide",
                             "#FF0000", "My red color Text in the second slide explaining something.",
                             "https://www.example.com/image2.jpg",
+                            null,
+                            null,
                             "https://www.example.com/audio2.mp3"
                             ],
                             [
                             "#800080", "My purple color Title in the third slide",
                             "#000000", null,
-                            "https://www.example.com/image3.jpg",
+                            "https://www.example.com/image3_first.jpg",
+                            "https://www.example.com/image3_second.jpg",
+                            3000,
                             "https://www.example.com/audio3.mp3",
                             ]
                           ],
