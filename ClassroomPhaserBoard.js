@@ -432,15 +432,11 @@ Classroom.Main.prototype = {
 				this.toastText.y = 381;
 				this.toastShadow.drawRoundedRect(800 / 2 - (this.toastText._width / 2) / 2 - 11, 373, (this.toastText._width / 2) + 23, 46, 10);
 
-				// CREATING A TEMPORARY REFERENCE FOR THE TIMEOUT FADE OUT
-				var tempToastTextRef = this.toastText;
-				var tempToastShadowRef = this.toastShadow;
-
 				// SETTING THAT IN 3 SECONDS THE SPLASH MUST FADE OUT
 				setTimeout(function()
 					{
-					game.add.tween(tempToastShadowRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
-					game.add.tween(tempToastTextRef).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+					game.add.tween(game.state.states["Classroom.Main"].toastShadow).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
+					game.add.tween(game.state.states["Classroom.Main"].toastText).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
 					}, 3000);
 
 				// SETTING THAT THE SPLASH MUST NOT BE DISPLAYED AGAIN
