@@ -122,7 +122,7 @@ Classroom.Preloader.prototype = {
 
 Classroom.Main = function (game)
 	{
-	this.splash = true;
+	this.toast = true;
 	this.toastText = null;
 	this.toastShadow = null;
 	this.board = null;
@@ -417,30 +417,35 @@ Classroom.Main.prototype = {
 			this.tip.y = 340;
 			}
 
-		// CHECKING IF THE SPLASH MUST BE DISPLAYED
-		if(this.splash==true)
+		// CHECKING IF THE ABOUT TOAST MUST BE DISPLAYED
+		if(this.toast==true)
 			{
-			// CHECKING IF THERE IS AN ABOUT
+			// CHECKING IF THERE IS AN ABOUT TEXT
 			if(parent.myJSON.STRING_ABOUT!=null)
 				{
-				// ADDING THE SPLASH
+				// CREATING THE ABOUT TOAST SHADOW
 				this.toastShadow = game.add.graphics();
 				this.toastShadow.beginFill(0x000000, 0.55);
+
+				// CREATING THE ABOUT TOAST TEXT
 				this.toastText = game.add.text(0, 0, parent.myJSON.STRING_ABOUT, { font: "bold 24px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" });
 				this.toastText.setShadow(3, 3, "rgba(0,0,0,0.5)", 2);
 				this.toastText.x = 800 / 2 - this.toastText.width / 4;
 				this.toastText.y = 381;
+
+				// DRAWING THE ABOUT TOAST SHADOW
 				this.toastShadow.drawRoundedRect(800 / 2 - (this.toastText._width / 2) / 2 - 11, 373, (this.toastText._width / 2) + 23, 46, 10);
 
-				// SETTING THAT IN 3 SECONDS THE SPLASH MUST FADE OUT
+				// SETTING THAT IN 3 SECONDS THE ABOUT TOAST MUST FADE OUT
 				setTimeout(function()
 					{
+					// FADING OUT THE ABOUT TOAST SHADOW AND TEXT
 					game.add.tween(game.state.states["Classroom.Main"].toastShadow).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
 					game.add.tween(game.state.states["Classroom.Main"].toastText).to({alpha: 0}, 500, Phaser.Easing.Linear.None, true);
 					}, 3000);
 
-				// SETTING THAT THE SPLASH MUST NOT BE DISPLAYED AGAIN
-				this.splash = false;
+				// SETTING THAT THE ABOUT TOAST MUST NOT BE DISPLAYED AGAIN
+				this.toast = false;
 				}
 			}
 		},
