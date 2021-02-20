@@ -224,15 +224,15 @@ Classroom.Main.prototype = {
 			}, this);
 
 		// ADDING THE BOARD
-		this.board = this.add.sprite(30, 10, "board");
+		this.board = this.add.sprite(30, 10, "imageBoard");
 
 		// ADDING THE GO BACK ICON
-		this.goBackIconShadow = game.add.sprite(30, 31, "goBack");
+		this.goBackIconShadow = game.add.sprite(30, 31, "imageGoBack");
 		this.goBackIconShadow.visible = false;
 		this.goBackIconShadow.anchor.set(0.5);
 		this.goBackIconShadow.tint = 0x000000;
 		this.goBackIconShadow.alpha = 0.9;
-		this.goBackIcon = this.add.sprite(5, 5, "goBack");
+		this.goBackIcon = this.add.sprite(5, 5, "imageGoBack");
 		this.goBackIcon.visible = false;
 		this.goBackIcon.inputEnabled = true;
 		this.goBackIcon.input.useHandCursor = true;
@@ -242,12 +242,12 @@ Classroom.Main.prototype = {
 			}, this);
 
 		// ADDING THE PREV SLIDE ICON
-		this.prevSlideIconShadow = game.add.sprite(30, 404, "goBack");
+		this.prevSlideIconShadow = game.add.sprite(30, 404, "imagePrevSlide");
 		this.prevSlideIconShadow.visible = false;
 		this.prevSlideIconShadow.anchor.set(0.5);
 		this.prevSlideIconShadow.tint = 0x000000;
 		this.prevSlideIconShadow.alpha = 0.9;
-		this.prevSlideIcon = this.add.sprite(5, 378, "prevSlide");
+		this.prevSlideIcon = this.add.sprite(5, 378, "imagePrevSlide");
 		this.prevSlideIcon.visible = false;
 		this.prevSlideIcon.inputEnabled = true;
 		this.prevSlideIcon.input.useHandCursor = true;
@@ -257,12 +257,12 @@ Classroom.Main.prototype = {
 			}, this);
 
 		// ADDING THE NEXT SLIDE ICON
-		this.nextSlideIconShadow = game.add.sprite(772, 404, "goBack");
+		this.nextSlideIconShadow = game.add.sprite(772, 404, "imageNextSlide");
 		this.nextSlideIconShadow.visible = false;
 		this.nextSlideIconShadow.anchor.set(0.5);
 		this.nextSlideIconShadow.tint = 0x000000;
 		this.nextSlideIconShadow.alpha = 0.9;
-		this.nextSlideIcon = this.add.sprite(747, 378, "nextSlide");
+		this.nextSlideIcon = this.add.sprite(747, 378, "imageNextSlide");
 		this.nextSlideIcon.visible = false;
 		this.nextSlideIcon.inputEnabled = true;
 		this.nextSlideIcon.input.useHandCursor = true;
