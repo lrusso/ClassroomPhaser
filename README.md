@@ -51,8 +51,7 @@ Open the **ClassroomPhaserDefault.json** and you will find a similar structure:
    "STRING_CLASS4_CONTENT": [],
    "STRING_CLASS5": null,
    "STRING_CLASS5_CONTENT": [],
-   "STRING_TIP": "Click in a class title to begin",
-   "STRING_ABOUT": "Designed by www.lrusso.com"
+   "STRING_TIP": "Click in a class title to begin"
 }
 ```
 
