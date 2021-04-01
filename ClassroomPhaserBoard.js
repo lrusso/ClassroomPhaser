@@ -967,7 +967,7 @@ function onAudioEndEvent()
 	}
 
 // CREATING THE CLASSROOM INSTANCE
-var config = {width: 800, height: 432, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: false, resolution: 2};
+var config = {width: 800, height: 432, renderer: Phaser.WEBGL, parent: "content", disableVisibilityChange: true, resolution: 2};
 var game = new Phaser.Game(config);
 
 // CREATING THE STATES
