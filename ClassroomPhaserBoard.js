@@ -973,7 +973,7 @@ function onAudioEndEvent()
 var rendererMode = Phaser.WEBGL;
 
 // CHECKING IF THE WEBGL RENDERER MODE IS NOT AVAILABLE
-if (!isWebGLAvailable()==false)
+if (isWebGLAvailable()==false)
 	{
 	// CHANGING THE RENDERER MODE
 	rendererMode = Phaser.CANVAS;
