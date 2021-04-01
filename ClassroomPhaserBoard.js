@@ -182,7 +182,7 @@ Classroom.Splash.prototype = {
 		// WAITING 4750 MS
 		game.time.events.add(4750, function()
 			{
-			// STARTING THE GAME
+			// STARTING THE CLASSROOM
 			game.state.start("Classroom.Main", Phaser.Plugin.StateTransition.Out.SlideLeft);
 			});
 		}
@@ -975,5 +975,5 @@ game.state.add("Classroom.Preloader", Classroom.Preloader);
 game.state.add("Classroom.Splash", Classroom.Splash);
 game.state.add("Classroom.Main", Classroom.Main);
 
-// STARTING THE GAME PRELOADER
+// STARTING THE CLASSROOM PRELOADER
 game.state.start("Classroom.Preloader");
