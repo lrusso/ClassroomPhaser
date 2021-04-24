@@ -79,7 +79,7 @@ window.addEventListener("focus", function()
 // CLASSROOM SCRIPT
 // ------------------------------------------------------------------------------------------------------------
 
-var Classroom = {showDebug: false};
+var Classroom = {};
 
 Classroom.Preloader = function(){};
 
