@@ -258,7 +258,7 @@ Classroom.Main.prototype = {
 	create: function()
 		{
 		// UPDATING THE DOCUMENT BACKGROUND COLOR
-		document.body.style.backgroundColor = "#275077";
+		document.getElementsByTagName("body")[0].className = "classroom_background";
 
 		// UPDATING THE CANVAS COLOR
 		this.stage.backgroundColor = "#275077";
